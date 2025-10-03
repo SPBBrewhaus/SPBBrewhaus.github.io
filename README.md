@@ -3,30 +3,30 @@
 Tap lines cleaned: 9/12/2025
 ## 🍺 Beers on Tap  
 
-| Location   | Tap | Beer             | Status |1/2 Barrel|1/6 Barrel| Notes |
+ | Tap | Beer             | Status |1/2 Barrel|1/6 Barrel| Notes |
 |------------|-----|------------------|--------|-------|--------|-------|
-| ⬇️ Downstairs |    |        ||  ||  |
-|  | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |4   | |  |
-|            | 2   | Restitution       | ![Low](https://img.shields.io/badge/Stock-Low-yellow) | 1  |  | Fresh batch in Tank 7 |
-|            | 3   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) | 5   | |  |
-|            | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) || 1    |  |
-|            | 5   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green) | 12  |  |  |
-|            | 6   | Irish             | ![Good](https://img.shields.io/badge/Stock-Good-green) | 3  |  |  |
-|            | 7   | Strawberry Peach  | ![Critical](https://img.shields.io/badge/Stock-Critical-red)  | 1  |  |  |
-|            | 8   | Jungle            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 3 |  |  |
-|            | 9   | Route 101         | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 7  | |  |
-|            | 10  | Czechs            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 17  |  |  |
-|            | 11  | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) |  2  |  |  |
-|            | 12  | Seltzer           | ![Low](https://img.shields.io/badge/Stock-Low-yellow)  | 4  | |  |
-| ⬆️ Upstairs  |    |        ||  ||  |
-|   | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |  4   | |  |
-|            | 2   | Amber             | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4 |  |  |
-|            | 3   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 12   | |  |
-|            | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red)  |  | 1  |  |
-|            | 5   | 51st State        | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4  | |  |
-|            | 6   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 5  |  |  |
-|            | 7   | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 2   | |  |
-|            | 8   | Sticky Fingers    | ![Critical](https://img.shields.io/badge/Stock-Critical-red) ||  1    |  |
+| ⬇️ Downstairs     |        ||  ||  |
+ | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |4   | |  |
+           | 2   | Restitution       | ![Low](https://img.shields.io/badge/Stock-Low-yellow) | 1  |  | Fresh batch in Tank 7 |
+          | 3   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) | 5   | |  |
+           | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) || 1    |  |
+          | 5   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green) | 12  |  |  |
+           | 6   | Irish             | ![Good](https://img.shields.io/badge/Stock-Good-green) | 3  |  |  |
+          | 7   | Strawberry Peach  | ![Critical](https://img.shields.io/badge/Stock-Critical-red)  | 1  |  |  |
+         | 8   | Jungle            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 3 |  |  |
+        | 9   | Route 101         | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 7  | |  |
+          | 10  | Czechs            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 17  |  |  |
+          | 11  | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) |  2  |  |  |
+           | 12  | Seltzer           | ![Low](https://img.shields.io/badge/Stock-Low-yellow)  | 4  | |  |
+| ⬆️ Upstairs      |        ||  ||  |
+  | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |  4   | |  |
+           | 2   | Amber             | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4 |  |  |
+          | 3   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 12   | |  |
+          | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red)  |  | 1  |  |
+         | 5   | 51st State        | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4  | |  |
+          | 6   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 5  |  |  |
+          | 7   | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 2   | |  |
+          | 8   | Sticky Fingers    | ![Critical](https://img.shields.io/badge/Stock-Critical-red) ||  1    |  |
 
 
 🪖 In the Tanks (Coming Soon)
