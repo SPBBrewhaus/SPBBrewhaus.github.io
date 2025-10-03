@@ -1,31 +1,71 @@
-🍻 Brewery Production & Inventory Update
+🍻 Brewery Production & Inventory
 
 Tap lines cleaned: 9/12/2025
 
 ⬇️ Downstairs Taps
-Tap	Beer	Status	Notes
-1	In a Haze	✅ Good Stock (4 kegs)	
-2	Restitution	⚠️ LOW (1 keg)	Fresh batch in Tank 7
-3	Slap Juice	✅ Good Stock (5 kegs)	
-4	Gringo	❗ Critically Low (1 sixel)	
-5	Octoberfest	✅ Good Stock (12 kegs)	
-6	Irish	✅ Good Stock (3 kegs)	
-7	Strawberry Peach	❗ Critically Low (1 keg)	
-8	Jungle	✅ Good Stock (3 kegs)	
-9	Route 101	✅ Good Stock (7 kegs)	
-10	Czechs	✅ Good Stock (17 kegs)	
-11	Pumpkin	✅ Good Stock (2 kegs)	
-12	Seltzer	⚠️ LOW (4 kegs)	
+
+In a Haze —
+(4 kegs)
+
+Restitution —
+(1 keg) → Fresh batch in Tank 7
+
+Slap Juice —
+(5 kegs)
+
+Gringo —
+(1 sixel)
+
+Octoberfest —
+(12 kegs)
+
+Irish —
+(3 kegs)
+
+Strawberry Peach —
+(1 keg)
+
+Jungle —
+(3 kegs)
+
+Route 101 —
+(7 kegs)
+
+Czechs —
+(17 kegs)
+
+Pumpkin —
+(2 kegs)
+
+Seltzer —
+(4 kegs)
+
 ⬆️ Upstairs Taps
-Tap	Beer	Status	Notes
-1	In a Haze	✅ Good Stock (4 kegs)	
-2	Amber	✅ Good Stock (4 kegs)	
-3	Octoberfest	✅ Good Stock (12 kegs)	
-4	Gringo	❗ Critically Low (1 sixel)	
-5	51st State	✅ Good Stock (4 kegs)	
-6	Slap Juice	✅ Good Stock (5 kegs)	
-7	Pumpkin	✅ Good Stock (2 kegs)	
-8	Sticky Fingers	❗ Critically Low (1 sixel)	
+
+In a Haze —
+(4 kegs)
+
+Amber —
+(4 kegs)
+
+Octoberfest —
+(12 kegs)
+
+Gringo —
+(1 sixel)
+
+51st State —
+(4 kegs)
+
+Slap Juice —
+(5 kegs)
+
+Pumpkin —
+(2 kegs)
+
+Sticky Fingers —
+(1 sixel)
+
 🪖 In the Tanks (Coming Soon)
 
 Tank 3 → S'mores
@@ -36,7 +76,7 @@ Tank 8 → Scottie Pumpkin
 
 Available tanks: 1, 2, 4, 5, 6
 
-⏳ On Deck
+<details> <summary>⏳ On Deck</summary>
 
 She’s a Peach (7)
 
@@ -60,6 +100,7 @@ Hindsight (1 sixel)
 
 Founders Oct (7)
 
+</details>
 ⚠️ Low Stock (Watch Closely)
 
 Restitution — 9 cases, 1 keg
@@ -86,11 +127,12 @@ NY Saaz
 
 NY IPA (Vista)
 
-📑 Orders
+<details> <summary>📑 Orders</summary>
 
 Eagle (10/02): Restitution — 16 kegs, 12 sixels
 
-🧻 Labels Needed
+</details>
+<details> <summary>🧻 Labels Needed</summary>
 
 Upcoming Brews:
 
@@ -110,7 +152,8 @@ Founders Sept
 
 Cherry Pineapple Sour
 
-📦 Ingredients
+</details>
+<details> <summary>📦 Ingredients</summary>
 
 Needed:
 
@@ -119,38 +162,10 @@ Galaxy — 44 lbs
 Amarillo — 44 lbs
 
 Current Hops Inventory:
+Nugget (27 lbs), Chinook (5 lbs), El Dorado (27 lbs), Warrior (5 lbs), NY Chinook (11 lbs), Centennial (221 lbs), Saaz (11 lbs), Vallestia (38 lbs), Zeus (33 lbs), Azacca (33 lbs), Simcoe (33 lbs), Citra (80 lbs), Amarillo (5 lbs), 32 DE 2021 (11 lbs), Mandarina (5 lbs)
 
-Nugget – 27 lbs
-
-Chinook – 5 lbs
-
-El Dorado – 27 lbs
-
-Warrior – 5 lbs
-
-NY Chinook – 11 lbs
-
-Centennial – 221 lbs
-
-Saaz – 11 lbs
-
-Vallestia – 38 lbs
-
-Zeus – 33 lbs
-
-Azacca – 33 lbs
-
-Simcoe – 33 lbs
-
-Citra – 80 lbs
-
-Amarillo – 5 lbs
-
-32 DE 2021 – 11 lbs
-
-Mandarina – 5 lbs
-
-⚙️ Maintenance
+</details>
+<details> <summary>⚙️ Maintenance & Logs</summary>
 
 Canning Line:
 
@@ -165,38 +180,6 @@ Other:
 Mash grate cleaned 8/1
 
 Water filters replaced 9/22
-
-🏭 Gas Levels
-
-CO₂: 118 psi
-
-Nitrogen: 1600 psi (No backup)
-
-Oxygen: 900 psi
-
-2× small CO₂ tanks
-
-🧪 Chemicals
-
-PAA: 50% (2 backup)
-
-Caustic: 15% (1 backup)
-
-Foaming Caustic: 80%
-
-LP Acid: 25% (1 backup)
-
-Glycol: 40%
-
-🔧 Materials Needed
-
-1 HP pump (quote given to Larry 6/19)
-
-New drill combo
-
-New contractor boil kettle
-
-📝 Logs
 
 Safety / Quality / Maintenance
 
@@ -221,5 +204,7 @@ Fix water softener
 Paint floors
 
 Glycol chiller pump bypassed — needs new fuses (received 5/27, waiting to install)
+
+</details>
 
 ✍️ Compiled by Skyler Newberry
