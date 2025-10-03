@@ -5,7 +5,8 @@ Tap lines cleaned: 9/12/2025
 
 | Location   | Tap | Beer             | Status | Notes |
 |------------|-----|------------------|--------|-------|
-| ⬇️ Downstairs | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
+| ⬇️ Downstairs | -   |-        |-| - |
+|            | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
 |            | 2   | Restitution       | ![Low](https://img.shields.io/badge/Stock-Low-yellow) (1 keg) | Fresh batch in Tank 7 |
 |            | 3   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) (5 kegs) |  |
 |            | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) (1 sixel) |  |
@@ -17,7 +18,8 @@ Tap lines cleaned: 9/12/2025
 |            | 10  | Czechs            | ![Good](https://img.shields.io/badge/Stock-Good-green) (17 kegs) |  |
 |            | 11  | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) (2 kegs) |  |
 |            | 12  | Seltzer           | ![Low](https://img.shields.io/badge/Stock-Low-yellow) (4 kegs) |  |
-| ⬆️ Upstairs   | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
+| ⬆️ Upstairs  | -   |-        |-| - |
+|            | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
 |            | 2   | Amber             | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
 |            | 3   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green) (12 kegs) |  |
 |            | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) (1 sixel) |  |
