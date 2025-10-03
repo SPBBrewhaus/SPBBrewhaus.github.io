@@ -161,9 +161,59 @@ Galaxy — 44 lbs
 
 Amarillo — 44 lbs
 
-Current Hops Inventory:
-Nugget (27 lbs), Chinook (5 lbs), El Dorado (27 lbs), Warrior (5 lbs), NY Chinook (11 lbs), Centennial (221 lbs), Saaz (11 lbs), Vallestia (38 lbs), Zeus (33 lbs), Azacca (33 lbs), Simcoe (33 lbs), Citra (80 lbs), Amarillo (5 lbs), 32 DE 2021 (11 lbs), Mandarina (5 lbs)
+<details> <summary>🌿 Hops On Hand</summary>
+A–C
 
+Amarillo —
+(5 lbs)
+
+Azacca —
+(33 lbs)
+
+Centennial —
+(221 lbs)
+
+Chinook —
+(5 lbs)
+
+Citra —
+(80 lbs)
+
+D–N
+
+El Dorado —
+(27 lbs)
+
+Mandarina —
+(5 lbs)
+
+Nugget —
+(27 lbs)
+
+NY Chinook —
+(11 lbs)
+
+S–Z
+
+Saaz —
+(11 lbs)
+
+Simcoe —
+(33 lbs)
+
+Vallestia —
+(38 lbs)
+
+Warrior —
+(5 lbs)
+
+Zeus —
+(33 lbs)
+
+32 DE 2021 —
+(11 lbs)
+
+</details>
 </details>
 <details> <summary>⚙️ Maintenance & Logs</summary>
 
