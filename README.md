@@ -146,11 +146,11 @@ S–Z
 </details>
 
 <details>
-<summary>⚙️ Maintenance & Logs</summary>
+  <summary>⚙️ Maintenance & Logs</summary>
 
-<div markdown="1">
-  
-### ❄️ Glycol Chiller Log  
+  <div markdown="1">
+
+### ❄️ Glycol Chiller Log
 
 | Date       | Event |
 |------------|-------|
@@ -159,7 +159,7 @@ S–Z
 
 ---
 
-### 🔥 Kettle Log  
+### 🔥 Kettle Log
 
 | Date       | Event |
 |------------|-------|
@@ -167,12 +167,13 @@ S–Z
 
 ---
 
-### 🧊 Big Cooler Log  
+### 🧊 Big Cooler Log
 
 | Date       | Event |
 |------------|-------|
 | 2025-10-02 | Temp check — 40°F (normal). |
 
+  </div>
 </details>
 
 
