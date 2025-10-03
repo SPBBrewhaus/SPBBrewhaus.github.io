@@ -1,4 +1,101 @@
 🍻 Brewery Production & Inventory
+<style>
+/* Responsive stacked table */
+.resp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+.resp-table th, .resp-table td {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.resp-table thead th {
+  background: #f8f8f8;
+  font-weight: 600;
+}
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.status-good { background:#e6ffed; }
+.status-low { background:#fff8e1; }
+.status-critical { background:#ffebee; }
+
+/* Stack rows on small screens */
+@media (max-width: 640px) {
+  .resp-table thead { display: none; }
+  .resp-table, .resp-table tbody, .resp-table tr, .resp-table td { display: block; width: 100%; }
+  .resp-table tr { border: 1px solid #eee; border-radius: 10px; margin: 10px 0; padding: 6px 8px; }
+  .resp-table td { border: 0; padding: 6px 0; }
+  .resp-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+}
+</style>
+
+<h3>Beers on Tap — Downstairs</h3>
+<table class="resp-table">
+  <thead>
+    <tr>
+      <th>Tap</th>
+      <th>Beer</th>
+      <th>Status</th>
+      <th>1/2 bbl</th>
+      <th>1/6 bbl</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Tap">1</td>
+      <td data-label="Beer">In a Haze</td>
+      <td data-label="Status"><span class="status-badge status-good">✅ Good</span></td>
+      <td data-label="1/2 bbl">4</td>
+      <td data-label="1/6 bbl">0</td>
+      <td data-label="Notes"></td>
+    </tr>
+    <tr>
+      <td data-label="Tap">2</td>
+      <td data-label="Beer">Restitution</td>
+      <td data-label="Status"><span class="status-badge status-low">🟡 Low</span></td>
+      <td data-label="1/2 bbl">1</td>
+      <td data-label="1/6 bbl">1</td>
+      <td data-label="Notes">Fresh batch in Tank 7</td>
+    </tr>
+    <tr>
+      <td data-label="Tap">3</td>
+      <td data-label="Beer">Slap Juice</td>
+      <td data-label="Status"><span class="status-badge status-good">✅ Good</span></td>
+      <td data-label="1/2 bbl">5</td>
+      <td data-label="1/6 bbl">0</td>
+      <td data-label="Notes"></td>
+    </tr>
+    <tr>
+      <td data-label="Tap">4</td>
+      <td data-label="Beer">Gringo</td>
+      <td data-label="Status"><span class="status-badge status-critical">🔴 Critical</span></td>
+      <td data-label="1/2 bbl">0</td>
+      <td data-label="1/6 bbl">1</td>
+      <td data-label="Notes"></td>
+    </tr>
+    <!-- Add more rows as needed -->
+  </tbody>
+</table>
+
+<h3>Beers on Tap — Upstairs</h3>
+<!-- duplicate table structure for upstairs with your values -->
 
 Tap lines cleaned: 9/12/2025
 ## 🍺 Beers on Tap  
