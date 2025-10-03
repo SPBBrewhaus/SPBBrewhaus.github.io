@@ -32,62 +32,39 @@ Tap lines cleaned: 9/12/2025
 🪖 In the Tanks (Coming Soon)
 
 Tank 3 → S'mores
-
 Tank 7 → Restitution
-
 Tank 8 → Scottie Pumpkin
-
 Available tanks: 1, 2, 4, 5, 6
 
 <details> <summary>⏳ On Deck</summary>
-
 She’s a Peach (7)
-
 Road Soda (2 sixels)
-
 99 Problems (3)
-
 Mole Stout (3)
-
 Cider (4 sixels)
-
 Juicy Haze (2 sixels)
-
 My Boy Blue (4)
-
 Jacks (2)
-
 Founders Sept (7)
-
 Hindsight (1 sixel)
-
 Founders Oct (7)
-
 </details>
+
+
 ⚠️ Low Stock (Watch Closely)
 
 Restitution — 9 cases, 1 keg
-
 Sticky Fingers — 1 sixel
-
 Straw Peach — 1 keg
-
 Seltzer — 4 kegs
-
 Gringo — 1 sixel
 
 🛠 To Brew (Next Batches)
-
 Winter’s Knight
-
 Cranberry Saison
-
 Super Haze
-
 Seltzer ×4
-
 NY Saaz
-
 NY IPA (Vista)
 
 <details> <summary>📑 Orders</summary>
