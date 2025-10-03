@@ -145,56 +145,30 @@ S–Z
 </details>
 </details>
 
-<details> <summary>⚙️ Maintenance & Logs</summary>
 <details>
-  <summary>📅 2025-09-22 — Burn tops issue</summary>
-  🔥 Left boils on → burn tops.  
-  🔍 Investigating with caustic + acid cycle.  
-</details>
+<summary>⚙️ Maintenance & Logs</summary>
 
-<details>
-  <summary>📅 2025-09-01 — Glycol issue</summary>
-  ❄️ Glycol chiller off.  
-  💧 Very low glycol; topped off and restarted.  
-</details>
-Canning Line:
+### ❄️ Glycol Chiller Log  
+| Date       | Event |
+|------------|-------|
+| 2025-09-01 | Chiller off → glycol very low, topped off with glycol + water, restarted. |
+| 2025-05-27 | New set of fuses received, waiting to install (pump bypassed). |
 
-Greased 9/31
+---
 
-Replaced fill O-rings 9/28
+### 🔥 Kettle Log  
+| Date       | Event |
+|------------|-------|
+| 2025-09-22 | Accidentally left boils on → burn tops. Second brew proceeding. Investigating with caustic + acid cycle. |
 
-Gland O-rings & spring 5/2
+---
 
-Other:
-
-Mash grate cleaned 8/1
-
-Water filters replaced 9/22
-
-Safety / Quality / Maintenance
-
-9/22: Left boils on → burn tops. Investigating with caustic + acid cycle.
-
-9/1: Glycol chiller off. Glycol very low; topped off and restarted.
-
-Checklists
-
-Chiller Filter: [needs update]
-
-Keggernut: None currently
-
-Big Cooler Temp: 40°F (10/02)
-
-Future Maintenance
-
-New water barrier
-
-Fix water softener
-
-Paint floors
-
-Glycol chiller pump bypassed — needs new fuses (received 5/27, waiting to install)
+### 🧊 Big Cooler Log  
+| Date       | Event |
+|------------|-------|
+| 2025-10-02 | Temp check — 40°F (normal). |
 
 </details>
+
 
 ✍️ Compiled by Skyler Newberry
