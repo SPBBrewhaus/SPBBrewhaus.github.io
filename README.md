@@ -175,14 +175,7 @@ S–Z
 
   </div>
 </details>
-### ❄️ Glycol Chiller Log
-<div id="chiller-log">Loading...</div>
 
-### 🔥 Kettle Log
-<div id="kettle-log">Loading...</div>
-
-### 🧊 Big Cooler Log
-<div id="cooler-log">Loading...</div>
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pubhtml?widget=true&amp;headers=false" 
         width="100%" height="400"></iframe>
