@@ -67,11 +67,21 @@ Tap lines cleaned: 9/12/2025
 - NY Saaz
 - NY IPA (Vista)
 
-<details> <summary>📑 Orders</summary>
 
-- Eagle (10/02): Restitution — 16 kegs, 12 sixels
+markdown="1" (Jekyll/kramdown):
 
-</details>
+
+
+<details>
+  <summary>📄 Orders</summary>
+
+  <div markdown="1">
+
+- Eagle (10/03): Restitution — 16 kegs, 12 sixels
+
+  </div>
+</details> 
+
 <details> <summary>🧻 Labels Needed</summary>
 
 - Upcoming Brews:
