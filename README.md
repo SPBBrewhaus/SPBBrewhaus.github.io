@@ -148,7 +148,10 @@ S–Z
 <details>
 <summary>⚙️ Maintenance & Logs</summary>
 
+<div markdown="1">
+  
 ### ❄️ Glycol Chiller Log  
+
 | Date       | Event |
 |------------|-------|
 | 2025-09-01 | Chiller off → glycol very low, topped off with glycol + water, restarted. |
@@ -157,6 +160,7 @@ S–Z
 ---
 
 ### 🔥 Kettle Log  
+
 | Date       | Event |
 |------------|-------|
 | 2025-09-22 | Accidentally left boils on → burn tops. Second brew proceeding. Investigating with caustic + acid cycle. |
@@ -164,6 +168,7 @@ S–Z
 ---
 
 ### 🧊 Big Cooler Log  
+
 | Date       | Event |
 |------------|-------|
 | 2025-10-02 | Temp check — 40°F (normal). |
