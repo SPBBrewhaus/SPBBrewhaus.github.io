@@ -31,10 +31,10 @@ Tap lines cleaned: 9/12/2025
 
 🪖 In the Tanks (Coming Soon)
 
--Tank 3 → S'mores
--Tank 7 → Restitution
--Tank 8 → Scottie Pumpkin
--Available tanks: 1, 2, 4, 5, 6
+- Tank 3 → S'mores
+- Tank 7 → Restitution
+- Tank 8 → Scottie Pumpkin
+- Available tanks: 1, 2, 4, 5, 6
 
 <details> <summary>⏳ On Deck</summary>
 -She’s a Peach (7)
