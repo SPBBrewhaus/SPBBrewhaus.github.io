@@ -1,70 +1,31 @@
 🍻 Brewery Production & Inventory
 
 Tap lines cleaned: 9/12/2025
+## 🍺 Beers on Tap  
 
-⬇️ Downstairs Taps
+| Location   | Tap | Beer             | Status | Notes |
+|------------|-----|------------------|--------|-------|
+| ⬇️ Downstairs | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
+|            | 2   | Restitution       | ![Low](https://img.shields.io/badge/Stock-Low-yellow) (1 keg) | Fresh batch in Tank 7 |
+|            | 3   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) (5 kegs) |  |
+|            | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) (1 sixel) |  |
+|            | 5   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green) (12 kegs) |  |
+|            | 6   | Irish             | ![Good](https://img.shields.io/badge/Stock-Good-green) (3 kegs) |  |
+|            | 7   | Strawberry Peach  | ![Critical](https://img.shields.io/badge/Stock-Critical-red) (1 keg) |  |
+|            | 8   | Jungle            | ![Good](https://img.shields.io/badge/Stock-Good-green) (3 kegs) |  |
+|            | 9   | Route 101         | ![Good](https://img.shields.io/badge/Stock-Good-green) (7 kegs) |  |
+|            | 10  | Czechs            | ![Good](https://img.shields.io/badge/Stock-Good-green) (17 kegs) |  |
+|            | 11  | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) (2 kegs) |  |
+|            | 12  | Seltzer           | ![Low](https://img.shields.io/badge/Stock-Low-yellow) (4 kegs) |  |
+| ⬆️ Upstairs   | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
+|            | 2   | Amber             | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
+|            | 3   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green) (12 kegs) |  |
+|            | 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) (1 sixel) |  |
+|            | 5   | 51st State        | ![Good](https://img.shields.io/badge/Stock-Good-green) (4 kegs) |  |
+|            | 6   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) (5 kegs) |  |
+|            | 7   | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) (2 kegs) |  |
+|            | 8   | Sticky Fingers    | ![Critical](https://img.shields.io/badge/Stock-Critical-red) (1 sixel) |  |
 
-In a Haze —
-(4 kegs)
-
-Restitution —
-(1 keg) → Fresh batch in Tank 7
-
-Slap Juice —
-(5 kegs)
-
-Gringo —
-(1 sixel)
-
-Octoberfest —
-(12 kegs)
-
-Irish —
-(3 kegs)
-
-Strawberry Peach —
-(1 keg)
-
-Jungle —
-(3 kegs)
-
-Route 101 —
-(7 kegs)
-
-Czechs —
-(17 kegs)
-
-Pumpkin —
-(2 kegs)
-
-Seltzer —
-(4 kegs)
-
-⬆️ Upstairs Taps
-
-In a Haze —
-(4 kegs)
-
-Amber —
-(4 kegs)
-
-Octoberfest —
-(12 kegs)
-
-Gringo —
-(1 sixel)
-
-51st State —
-(4 kegs)
-
-Slap Juice —
-(5 kegs)
-
-Pumpkin —
-(2 kegs)
-
-Sticky Fingers —
-(1 sixel)
 
 🪖 In the Tanks (Coming Soon)
 
