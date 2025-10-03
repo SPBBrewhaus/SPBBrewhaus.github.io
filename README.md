@@ -69,7 +69,7 @@ Tap lines cleaned: 9/12/2025
 
 <details> <summary>📑 Orders</summary>
 
-Eagle (10/02): Restitution — 16 kegs, 12 sixels
+- Eagle (10/02): Restitution — 16 kegs, 12 sixels
 
 </details>
 <details> <summary>🧻 Labels Needed</summary>
@@ -87,8 +87,8 @@ Eagle (10/02): Restitution — 16 kegs, 12 sixels
 <details> <summary>📦 Ingredients</summary>
 
 Needed:
--Galaxy — 44 lbs
--Amarillo — 44 lbs
+- Galaxy — 44 lbs
+- Amarillo — 44 lbs
 
 <details> <summary>🌿 Hops On Hand</summary>
 A–C
@@ -144,8 +144,19 @@ S–Z
 
 </details>
 </details>
-<details> <summary>⚙️ Maintenance & Logs</summary>
 
+<details> <summary>⚙️ Maintenance & Logs</summary>
+<details>
+  <summary>📅 2025-09-22 — Burn tops issue</summary>
+  🔥 Left boils on → burn tops.  
+  🔍 Investigating with caustic + acid cycle.  
+</details>
+
+<details>
+  <summary>📅 2025-09-01 — Glycol issue</summary>
+  ❄️ Glycol chiller off.  
+  💧 Very low glycol; topped off and restarted.  
+</details>
 Canning Line:
 
 Greased 9/31
