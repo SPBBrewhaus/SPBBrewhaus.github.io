@@ -1,4 +1,18 @@
 🍻 Brewery Production & Inventory
+
+| Beer / Kegs            | Status / Notes      |
+|-------------------------|---------------------|
+| **Restitution**         | Status: 🔴 Critical |
+| 1/2 bbl: 1 • 1/6 bbl: 1 | Notes: Fresh batch  |
+| **Peach Sour**          | Status: 🟡 Brewing  |
+| 1/2 bbl: 0 • 1/6 bbl: 2 | Notes: —            |
+| **Octoberfest**         | Status: ✅ On Tap   |
+| 1/2 bbl: 1 • 1/6 bbl: 0 | Notes: Seasonal run |
+| **Pumpkin Ale**         | Status: 🟢 Low      |
+| 1/2 bbl: 2 • 1/6 bbl: 1 | Notes: Almost gone  |
+
+
+
 <style>
 /* Responsive stacked table */
 .resp-table {
