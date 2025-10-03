@@ -53,19 +53,19 @@ Tap lines cleaned: 9/12/2025
 
 ⚠️ Low Stock (Watch Closely)
 
--Restitution — 9 cases, 1 keg
--Sticky Fingers — 1 sixel
--Straw Peach — 1 keg
--Seltzer — 4 kegs
--Gringo — 1 sixel
+- Restitution — 9 cases, 1 keg
+- Sticky Fingers — 1 sixel
+- Straw Peach — 1 keg
+- Seltzer — 4 kegs
+- Gringo — 1 sixel
 
 🛠 To Brew (Next Batches)
--Winter’s Knight
--Cranberry Saison
--Super Haze
--Seltzer ×4
--NY Saaz
--NY IPA (Vista)
+- Winter’s Knight
+- Cranberry Saison
+- Super Haze
+- Seltzer ×4
+- NY Saaz
+- NY IPA (Vista)
 
 <details> <summary>📑 Orders</summary>
 
@@ -74,15 +74,15 @@ Eagle (10/02): Restitution — 16 kegs, 12 sixels
 </details>
 <details> <summary>🧻 Labels Needed</summary>
 
--Upcoming Brews:
-  -Winter’s Knight
-  -Super Haze
--Inventory:
-  -Boston South Irish Stout
-  -S’mores
-  -New West Coast
-  -Founders Sept
-  -Cherry Pineapple Sour
+- Upcoming Brews:
+  - Winter’s Knight
+  - Super Haze
+- Inventory:
+  - Boston South Irish Stout
+  - S’mores
+  - New West Coast
+  - Founders Sept
+  - Cherry Pineapple Sour
 </details>
 <details> <summary>📦 Ingredients</summary>
 
@@ -93,53 +93,53 @@ Needed:
 <details> <summary>🌿 Hops On Hand</summary>
 A–C
 
-Amarillo —
+- Amarillo —
 (5 lbs)
 
-Azacca —
+- Azacca —
 (33 lbs)
 
-Centennial —
+- Centennial —
 (221 lbs)
 
-Chinook —
+- Chinook —
 (5 lbs)
 
-Citra —
+- Citra —
 (80 lbs)
 
 D–N
 
-El Dorado —
+- El Dorado —
 (27 lbs)
 
-Mandarina —
+- Mandarina —
 (5 lbs)
 
-Nugget —
+- Nugget —
 (27 lbs)
 
-NY Chinook —
+- NY Chinook —
 (11 lbs)
 
 S–Z
 
-Saaz —
+- Saaz —
 (11 lbs)
 
-Simcoe —
+- Simcoe —
 (33 lbs)
 
-Vallestia —
+- Vallestia —
 (38 lbs)
 
-Warrior —
+- Warrior —
 (5 lbs)
 
-Zeus —
+- Zeus —
 (33 lbs)
 
-32 DE 2021 —
+- 32 DE 2021 —
 (11 lbs)
 
 </details>
