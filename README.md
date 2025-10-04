@@ -3,13 +3,13 @@
 | Beer         | Details                 |
 |--------------|--------------------------|
 | **Restitution** | Status: 🔴 Critical  
-1/2 bbl: 1 • 1/6 bbl: 1 |
+1/2 bbl: 1 | 1/6 bbl: 1 
 | **Peach Sour**  | Status: 🟡 Brewing  
-1/2 bbl: 0 • 1/6 bbl: 2 |
+1/2 bbl: 0 | 1/6 bbl: 2 |
 | **Octoberfest** | Status: ✅ On Tap  
-1/2 bbl: 1 • 1/6 bbl: 0 |
+1/2 bbl: 1 | 1/6 bbl: 0 |
 | **Pumpkin Ale** | Status: 🟢 Low  
-1/2 bbl: 2 • 1/6 bbl: 1 |
+1/2 bbl: 2 | 1/6 bbl: 1 |
 
 | Beer         | Status          |
 |--------------|-----------------|
