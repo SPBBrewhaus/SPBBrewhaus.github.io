@@ -1,5 +1,16 @@
 🍻 Brewery Production & Inventory
 
+🍻 Brewery Production & Inventory
+
+| Beer         | Tap | Status               | 1/2 bbl | 1/6 bbl |
+|--------------|-----|----------------------|---------|---------|
+| Restitution  | 2   | 🔴 Critical          | 1       | 1       |
+| Peach Sour   | 3   | 🟠 Brewing           | 0       | 2       |
+| Octoberfest  | 5   | ✅ On Tap            | 1       | 0       |
+| Pumpkin Ale  | 6   | 🟢 Low               | 2       | 1       |
+
+
+
 | Beer         | Details                 |
 |--------------|--------------------------|
 | **Restitution** | Status: 🔴 Critical  
