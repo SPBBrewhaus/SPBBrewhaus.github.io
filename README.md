@@ -1,4 +1,28 @@
 🍻 Brewery Production & Inventory
+<table>
+  <tr>
+    <th>Beer</th>
+    <th>Status</th>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <details>
+        <summary><strong>Restitution</strong> – On Tap</summary>
+        <p>Notes: Crisp amber ale. Batch #23 brewed Sept 28. Cleaning scheduled for Oct 10.</p>
+      </details>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <details>
+        <summary><strong>Peach Sour</strong> – Fermenting</summary>
+        <p>Notes: Expected ABV 4.8%. Dry-hopping on Oct 7.</p>
+      </details>
+    </td>
+  </tr>
+</table>
 
 🍻 Brewery Production & Inventory
 
@@ -149,7 +173,7 @@ Tap lines cleaned: 9/12/2025
 
  | Tap | Beer             | Status |1/2 Barrel|1/6 Barrel| Notes |
 |------------|-----|------------------|--------|-------|--------|-------|
-| ⬇️ Downstairs     |        ||  ||  |
+| ⬇️ DN|        ||  ||  |
 | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |4   | |  |
 | 2   | Restitution       | ![Low](https://img.shields.io/badge/Stock-Low-yellow) | 1  |  | Fresh batch in Tank 7 |
 | 3   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) | 5   | |  |
@@ -162,7 +186,7 @@ Tap lines cleaned: 9/12/2025
 | 10  | Czechs            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 17  |  |  |
 | 11  | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) |  2  |  |  |
 | 12  | Seltzer           | ![Low](https://img.shields.io/badge/Stock-Low-yellow)  | 4  | |  |
-| ⬆️ Upstairs      |        ||  ||  |
+| ⬆️ Up|        ||  ||  |
 | 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |  4   | |  |
 | 2   | Amber             | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4 |  |  |
 | 3   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 12   | |  |
