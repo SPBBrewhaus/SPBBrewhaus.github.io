@@ -1,42 +1,85 @@
-.beer-table details {
-  background: #f8f5f0;      /* beige base */
-  border: 1px solid #c9c3b9;
-  border-radius: 8px;
-  margin: 6px 0;
-  padding: 6px 10px;
-  font-family: system-ui, sans-serif;
+/* Container */
+.beer-table {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: #222;
 }
 
-.beer-table summary {
+/* Header */
+.beer-header {
   display: grid;
-  grid-template-columns: 50px 1fr 70px 70px;
+  grid-template-columns: 28px 60px 1fr 80px 80px;
+  gap: 8px;
   align-items: center;
-  cursor: pointer;
+  background: #efe9dc;     /* beige header */
+  border: 1px solid #c9c3b9;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+
+/* Rows */
+.beer-row {
+  background: #f8f5f0;     /* beige card */
+  border: 1px solid #c9c3b9;
+  border-radius: 8px;
+  margin: 8px 0;
+  padding: 0 10px 8px;
+}
+
+/* Summary lays out like a table row */
+.beer-row > summary {
+  display: grid;
+  grid-template-columns: 28px 60px 1fr 80px 80px;
+  gap: 8px;
+  align-items: center;
   list-style: none;
+  cursor: pointer;
+  padding: 10px 0 8px;
 }
 
-.beer-table summary::-webkit-details-marker { display: none; }
+/* hide default marker (works on Chromium/WebKit) */
+.beer-row > summary::-webkit-details-marker { display: none; }
 
-.beer-table summary::before {
-  content: "▶";
-  margin-right: 6px;
-  transition: transform 0.2s;
+/* Arrow cell */
+.beer-row .chev {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform .2s ease;
   color: #7a6c5a;
+  font-weight: 700;
 }
 
-.beer-table details[open] summary::before { transform: rotate(90deg); }
+/* Rotate when open */
+.beer-row[open] .chev { transform: rotate(90deg); }
 
-.beer-table span { padding: 2px 0; }
+/* Cells */
+.beer-row .tap,
+.beer-row .half,
+.beer-row .sixth { text-align: center; font-weight: 600; }
 
-.beer-table .tap { text-align: center; font-weight: 600; }
+.beer-row .beer {
+  min-width: 0;                  /* enables ellipsis */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-.beer-table .half, .beer-table .sixth { text-align: center; }
-
-.beer-table .notes {
-  margin-top: 6px;
+/* Notes area */
+.beer-row .notes {
   border-top: 1px solid #ddd;
-  padding-top: 6px;
-  font-style: italic;
+  margin-top: 8px;
+  padding-top: 8px;
   color: #444;
+  font-style: italic;
+}
+
+/* Mobile: stack neatly */
+@media (max-width: 640px) {
+  .beer-header,
+  .beer-row > summary {
+    grid-template-columns: 28px 50px 1fr 60px 60px;
+    gap: 6px;
+  }
+  .beer-row .beer { white-space: normal; text-overflow: clip; }
 }
