@@ -1,10 +1,10 @@
 <div id="upstairs-table">Loading…</div>
 <div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
+<div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
 
 <script>
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
 
-  // Tiny CSV parser (handles quoted commas)
   function parseCSV(text) {
     const out = []; let row = [], field = "", q = false;
     for (let i=0; i<text.length; i++) {
@@ -30,20 +30,15 @@
 
   function buildTable(rows) {
     let html = '<table class="beer-table"><thead><tr>' +
-               '<th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th>' +
+               '<th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th><th>Cases of Cans</th>' +
                '</tr></thead><tbody>';
     for (const r of rows) {
-      const tap   = r.tap ?? "";
-      const beer  = r.beer ?? "";
-      const stat  = r.status ?? "";
-      const half  = r.half ?? "";
-      const sixth = r.sixth ?? "";
-      const notes = r.notes ?? "";
       html += `<tr>
-        <td>${tap}</td>
-        <td><strong>${beer}</strong>${stat ? " — " + stat : ""}${notes ? `<div style="color:#555;font-style:italic">${notes}</div>` : ""}</td>
-        <td>${half}</td>
-        <td>${sixth}</td>
+        <td>${r.tap || ""}</td>
+        <td><strong>${r.beer || ""}</strong>${r.status ? " — " + r.status : ""}${r.notes ? `<div style="color:#555;font-style:italic">${r.notes}</div>` : ""}</td>
+        <td>${r.half || ""}</td>
+        <td>${r.sixth || ""}</td>
+        <td>${r.cans || ""}</td>
       </tr>`;
     }
     html += '</tbody></table>';
@@ -61,21 +56,26 @@
       status:   r[header.indexOf("status")] || "",
       half:     r[header.indexOf("1/2 bbl")] || "",
       sixth:    r[header.indexOf("1/6 bbl")] || "",
+      cans:     r[header.indexOf("cases of cans")] || "",
       notes:    r[header.indexOf("notes")] || "",
     })).filter(x => Object.values(x).some(v => (v||"").trim() !== ""));
 
     const upstairs   = data.filter(x => x.location.toLowerCase().includes("up"));
     const downstairs = data.filter(x => x.location.toLowerCase().includes("down"));
+    const ondeck     = data.filter(x => x.location.toLowerCase().includes("deck"));
 
     document.getElementById("upstairs-table").innerHTML  =
-      upstairs.length ? buildTable(upstairs) : "<em>No Upstairs rows.</em>";
+      upstairs.length ? `<h3>Upstairs — On Tap</h3>${buildTable(upstairs)}` : "";
     document.getElementById("downstairs-table").innerHTML =
-      downstairs.length ? buildTable(downstairs) : "<em>No Downstairs rows.</em>";
+      downstairs.length ? `<h3>Downstairs — On Tap</h3>${buildTable(downstairs)}` : "";
+    document.getElementById("ondeck-table").innerHTML =
+      ondeck.length ? `<h3>On Deck</h3>${buildTable(ondeck)}` : "";
   }
 
   render();
   // setInterval(render, 10 * 60 * 1000); // optional auto-refresh
 </script>
+
 
 🪖 In the Tanks (Coming Soon)
 
