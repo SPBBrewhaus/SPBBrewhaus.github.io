@@ -85,24 +85,6 @@
 - Available tanks: 1, 2, 4, 5, 6
 
 
-<details>
-  <summary>⏳ On Deck</summary>
-
-- She’s a Peach (7)
-- Road Soda (2 sixels)
-- 99 Problems (3)
-- Mole Stout (3)
-- Cider (4 sixels)
-- Juicy Haze (2 sixels)
-- My Boy Blue (4)
-- Jacks (2)
-- Founders Sept (7)
-- Hindsight (1 sixel)
-- Founders Oct (7)
-
-</details>
-
-
 ⚠️ Low Stock (Watch Closely)
 
 - Restitution — 9 cases, 1 keg
@@ -200,15 +182,15 @@
 | Date       | Event |
 |------------|-------|
 | 2025-10-02 | Temp check — 40°F (normal). |
-
-</details>
-
-
 <iframe 
   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pubhtml?widget=true&amp;headers=false" 
   width="100%" 
   height="400">
 </iframe>
+
+</details>
+
+
 
 ✍️ Compiled by Skyler Newberry
 
