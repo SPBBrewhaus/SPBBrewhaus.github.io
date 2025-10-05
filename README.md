@@ -1,5 +1,5 @@
 🍻 Brewery Production & Inventory
-<table id="tapTable">
+<table>
   <tr>
     <th>Tap</th>
     <th>Beer + Status</th>
@@ -8,225 +8,69 @@
   </tr>
 
   <!-- Row 1 -->
-  <tr class="expandable">
-    <td>1</td>
-    <td><strong>Restitution</strong> – On Tap</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-  <tr class="notes">
+  <tr>
     <td colspan="4">
-      Notes: Crisp amber ale, batch #23. Cleaned Sept 28, next rotation Oct 10.
+      <details>
+        <summary>
+          <table width="100%">
+            <tr>
+              <td width="10%"><strong>1</strong></td>
+              <td width="60%"><strong>Restitution</strong> – On Tap</td>
+              <td width="15%">1</td>
+              <td width="15%">1</td>
+            </tr>
+          </table>
+        </summary>
+        <div>
+          <p><strong>Notes:</strong> Crisp amber ale, batch #23. Cleaned Sept 28; next rotation Oct 10.</p>
+        </div>
+      </details>
     </td>
   </tr>
 
   <!-- Row 2 -->
-  <tr class="expandable">
-    <td>2</td>
-    <td><strong>Peach Sour</strong> – Fermenting</td>
-    <td>0</td>
-    <td>1</td>
-  </tr>
-  <tr class="notes">
+  <tr>
     <td colspan="4">
-      Notes: Expected ABV 4.8 %. Dry-hop Oct 7. Tart with local peach puree.
+      <details>
+        <summary>
+          <table width="100%">
+            <tr>
+              <td width="10%"><strong>2</strong></td>
+              <td width="60%"><strong>Peach Sour</strong> – Fermenting</td>
+              <td width="15%">0</td>
+              <td width="15%">1</td>
+            </tr>
+          </table>
+        </summary>
+        <div>
+          <p><strong>Notes:</strong> Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</p>
+        </div>
+      </details>
     </td>
   </tr>
 
   <!-- Row 3 -->
-  <tr class="expandable">
-    <td>3</td>
-    <td><strong>Octoberfest</strong> – Conditioning</td>
-    <td>2</td>
-    <td>0</td>
-  </tr>
-  <tr class="notes">
+  <tr>
     <td colspan="4">
-      Notes: Lagering at 38 °F. Ready for release mid-October.
+      <details>
+        <summary>
+          <table width="100%">
+            <tr>
+              <td width="10%"><strong>3</strong></td>
+              <td width="60%"><strong>Octoberfest</strong> – Conditioning</td>
+              <td width="15%">2</td>
+              <td width="15%">0</td>
+            </tr>
+          </table>
+        </summary>
+        <div>
+          <p><strong>Notes:</strong> Lagering at 38 °F. Release mid-October.</p>
+        </div>
+      </details>
     </td>
   </tr>
 </table>
 
-<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: sans-serif;
-    background: #f8f5f0; /* beige tone */
-  }
-  th, td {
-
-🍻 Brewery Production & Inventory
-
-| Beer         | Tap | Status               | 1/2 bbl | 1/6 bbl |
-|--------------|-----|----------------------|---------|---------|
-| Restitution  | 2   | 🔴 Critical          | 1       | 1       |
-| Peach Sour   | 3   | 🟠 Brewing           | 0       | 2       |
-| Octoberfest  | 5   | ✅ On Tap            | 1       | 0       |
-| Pumpkin Ale  | 6   | 🟢 Low               | 2       | 1       |
-
-
-
-| Beer         | Details                 |
-|--------------|--------------------------|
-| **Restitution** | Status: 🔴 Critical  
-1/2 bbl: 1 | 1/6 bbl: 1 
-| **Peach Sour**  | Status: 🟡 Brewing  
-1/2 bbl: 0 | 1/6 bbl: 2 |
-| **Octoberfest** | Status: ✅ On Tap  
-1/2 bbl: 1 | 1/6 bbl: 0 |
-| **Pumpkin Ale** | Status: 🟢 Low  
-1/2 bbl: 2 | 1/6 bbl: 1 |
-
-| Beer         | Status          |
-|--------------|-----------------|
-| Restitution  | Critical        |
-| 1/2 bbl: 1   | 1/6 bbl: 1      |
-| Peach Sour   | Brewing         |
-| 1/2 bbl: 0   | 1/6 bbl: 2      |
-| Octoberfest  | On Tap          |
-| 1/2 bbl: 1   | 1/6 bbl: 0      |
-| Pumpkin Ale  | Low             |
-| 1/2 bbl: 2   | 1/6 bbl: 1      |
-
-| Beer / Kegs            | Status / Notes      |
-|-------------------------|---------------------|
-| **Restitution**         | Status: 🔴 Critical |
-| 1/2 bbl: 1 • 1/6 bbl: 1 | Notes: Fresh batch  |
-| **Peach Sour**          | Status: 🟡 Brewing  |
-| 1/2 bbl: 0 • 1/6 bbl: 2 | Notes: —            |
-| **Octoberfest**         | Status: ✅ On Tap   |
-| 1/2 bbl: 1 • 1/6 bbl: 0 | Notes: Seasonal run |
-| **Pumpkin Ale**         | Status: 🟢 Low      |
-| 1/2 bbl: 2 • 1/6 bbl: 1 | Notes: Almost gone  |
-
-
-
-<style>
-/* Responsive stacked table */
-.resp-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-.resp-table th, .resp-table td {
-  border-bottom: 1px solid #e5e5e5;
-  padding: 8px 10px;
-  text-align: left;
-  vertical-align: top;
-}
-.resp-table thead th {
-  background: #f8f8f8;
-  font-weight: 600;
-}
-.status-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 12px;
-  line-height: 1.6;
-}
-.status-good { background:#e6ffed; }
-.status-low { background:#fff8e1; }
-.status-critical { background:#ffebee; }
-
-/* Stack rows on small screens */
-@media (max-width: 640px) {
-  .resp-table thead { display: none; }
-  .resp-table, .resp-table tbody, .resp-table tr, .resp-table td { display: block; width: 100%; }
-  .resp-table tr { border: 1px solid #eee; border-radius: 10px; margin: 10px 0; padding: 6px 8px; }
-  .resp-table td { border: 0; padding: 6px 0; }
-  .resp-table td::before {
-    content: attr(data-label);
-    display: block;
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-    letter-spacing: .02em;
-  }
-}
-</style>
-
-<h3>Beers on Tap — Downstairs</h3>
-<table class="resp-table">
-  <thead>
-    <tr>
-      <th>Tap</th>
-      <th>Beer</th>
-      <th>Status</th>
-      <th>1/2 bbl</th>
-      <th>1/6 bbl</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td data-label="Tap">1</td>
-      <td data-label="Beer">In a Haze</td>
-      <td data-label="Status"><span class="status-badge status-good">✅ Good</span></td>
-      <td data-label="1/2 bbl">4</td>
-      <td data-label="1/6 bbl">0</td>
-      <td data-label="Notes"></td>
-    </tr>
-    <tr>
-      <td data-label="Tap">2</td>
-      <td data-label="Beer">Restitution</td>
-      <td data-label="Status"><span class="status-badge status-low">🟡 Low</span></td>
-      <td data-label="1/2 bbl">1</td>
-      <td data-label="1/6 bbl">1</td>
-      <td data-label="Notes">Fresh batch in Tank 7</td>
-    </tr>
-    <tr>
-      <td data-label="Tap">3</td>
-      <td data-label="Beer">Slap Juice</td>
-      <td data-label="Status"><span class="status-badge status-good">✅ Good</span></td>
-      <td data-label="1/2 bbl">5</td>
-      <td data-label="1/6 bbl">0</td>
-      <td data-label="Notes"></td>
-    </tr>
-    <tr>
-      <td data-label="Tap">4</td>
-      <td data-label="Beer">Gringo</td>
-      <td data-label="Status"><span class="status-badge status-critical">🔴 Critical</span></td>
-      <td data-label="1/2 bbl">0</td>
-      <td data-label="1/6 bbl">1</td>
-      <td data-label="Notes"></td>
-    </tr>
-    <!-- Add more rows as needed -->
-  </tbody>
-</table>
-
-<h3>Beers on Tap — Upstairs</h3>
-<!-- duplicate table structure for upstairs with your values -->
-
-Tap lines cleaned: 9/12/2025
-## 🍺 Beers on Tap  
-
- | Tap | Beer             | Status |1/2 Barrel|1/6 Barrel| Notes |
-|------------|-----|------------------|--------|-------|--------|-------|
-| ⬇️ DN|        ||  ||  |
-| 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |4   | |  |
-| 2   | Restitution       | ![Low](https://img.shields.io/badge/Stock-Low-yellow) | 1  |  | Fresh batch in Tank 7 |
-| 3   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green) | 5   | |  |
-| 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red) || 1    |  |
-| 5   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green) | 12  |  |  |
-| 6   | Irish             | ![Good](https://img.shields.io/badge/Stock-Good-green) | 3  |  |  |
-| 7   | Strawberry Peach  | ![Critical](https://img.shields.io/badge/Stock-Critical-red)  | 1  |  |  |
-| 8   | Jungle            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 3 |  |  |
-| 9   | Route 101         | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 7  | |  |
-| 10  | Czechs            | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 17  |  |  |
-| 11  | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green) |  2  |  |  |
-| 12  | Seltzer           | ![Low](https://img.shields.io/badge/Stock-Low-yellow)  | 4  | |  |
-| ⬆️ Up|        ||  ||  |
-| 1   | In a Haze        | ![Good](https://img.shields.io/badge/Stock-Good-green) |  4   | |  |
-| 2   | Amber             | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4 |  |  |
-| 3   | Octoberfest       | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 12   | |  |
-| 4   | Gringo            | ![Critical](https://img.shields.io/badge/Stock-Critical-red)  |  | 1  |  |
-| 5   | 51st State        | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 4  | |  |
-| 6   | Slap Juice        | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 5  |  |  |
-| 7   | Pumpkin           | ![Good](https://img.shields.io/badge/Stock-Good-green)  | 2   | |  |
-| 8   | Sticky Fingers    | ![Critical](https://img.shields.io/badge/Stock-Critical-red) ||  1    |  |
 
 
 🪖 In the Tanks (Coming Soon)
