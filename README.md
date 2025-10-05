@@ -1,3 +1,8 @@
+
+
+
+
+
 <div id="upstairs-table">Loading…</div>
 <div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
 <div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
@@ -7,11 +12,11 @@
 
   function parseCSV(text) {
     const out = []; let row = [], field = "", q = false;
-    for (let i=0; i<text.length; i++) {
-      const c = text[i], n = text[i+1];
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i], n = text[i + 1];
       if (q) {
         if (c === '"' && n === '"') { field += '"'; i++; }
-        else if (c === '"') { q = false; }
+        else if (c === '"') q = false;
         else field += c;
       } else {
         if (c === '"') q = true;
@@ -19,7 +24,7 @@
         else if (c === '\n' || c === '\r') {
           if (c === '\r' && n === '\n') i++;
           row.push(field); field = "";
-          if (row.some(v => (v||"").trim() !== "")) out.push(row);
+          if (row.some(v => (v || "").trim() !== "")) out.push(row);
           row = [];
         } else field += c;
       }
@@ -28,9 +33,18 @@
     return out;
   }
 
+  function getStatusIcon(status) {
+    if (!status) return "";
+    const s = status.trim().toLowerCase();
+    if (s.startsWith("good")) return "✅";
+    if (s.startsWith("low")) return "🟡";
+    if (s.startsWith("out")) return "❌";
+    return "";
+  }
+
   function buildTable(rows) {
     let html = '<table class="beer-table"><thead><tr>' +
-               '<th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th><th>Cases of Cans</th>' +
+               '<th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th><th>Cases of Cans</th><th>Stock</th>' +
                '</tr></thead><tbody>';
     for (const r of rows) {
       html += `<tr>
@@ -39,6 +53,7 @@
         <td>${r.half || ""}</td>
         <td>${r.sixth || ""}</td>
         <td>${r.cans || ""}</td>
+        <td style="text-align:center;font-size:1.2em">${getStatusIcon(r.stock)}</td>
       </tr>`;
     }
     html += '</tbody></table>';
@@ -48,7 +63,7 @@
   async function render() {
     const res = await fetch(CSV_URL, { cache: "no-cache" });
     const rows = parseCSV(await res.text());
-    const header = rows[0].map(h => (h||"").trim().toLowerCase());
+    const header = rows[0].map(h => (h || "").trim().toLowerCase());
     const data = rows.slice(1).map(r => ({
       location: r[header.indexOf("location")] || "",
       tap:      r[header.indexOf("tap")] || "",
@@ -57,14 +72,15 @@
       half:     r[header.indexOf("1/2 bbl")] || "",
       sixth:    r[header.indexOf("1/6 bbl")] || "",
       cans:     r[header.indexOf("cases of cans")] || "",
+      stock:    r[header.indexOf("stock status")] || "",
       notes:    r[header.indexOf("notes")] || "",
-    })).filter(x => Object.values(x).some(v => (v||"").trim() !== ""));
+    }));
 
     const upstairs   = data.filter(x => x.location.toLowerCase().includes("up"));
     const downstairs = data.filter(x => x.location.toLowerCase().includes("down"));
     const ondeck     = data.filter(x => x.location.toLowerCase().includes("deck"));
 
-    document.getElementById("upstairs-table").innerHTML  =
+    document.getElementById("upstairs-table").innerHTML =
       upstairs.length ? `<h3>Upstairs — On Tap</h3>${buildTable(upstairs)}` : "";
     document.getElementById("downstairs-table").innerHTML =
       downstairs.length ? `<h3>Downstairs — On Tap</h3>${buildTable(downstairs)}` : "";
@@ -73,7 +89,6 @@
   }
 
   render();
-  // setInterval(render, 10 * 60 * 1000); // optional auto-refresh
 </script>
 
 <p><a href="https://docs.google.com/spreadsheets/d/13-oglKrmnpkJok_xEO7brLNmnetRz3XIkrc2gSXf4X0/edit?usp=sharing" target="_blank">
