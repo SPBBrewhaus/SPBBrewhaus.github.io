@@ -1,57 +1,34 @@
-<link rel="stylesheet" href="/assets/css/beer.css">
+<table>
+  <thead>
+    <tr>
+      <th>Tap</th>
+      <th>Beer + Status</th>
+      <th>1/2 bbl</th>
+      <th>1/6 bbl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Restitution</strong> – On Tap</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Peach Sour</strong> – Fermenting</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Octoberfest</strong> – Conditioning</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="beer-table">
-  <!-- Header row -->
-  <div class="beer-header">
-    <div></div>
-    <div>Tap</div>
-    <div>Beer + Status</div>
-    <div>1/2 bbl</div>
-    <div>1/6 bbl</div>
-  </div>
-
-  <!-- Row 1 -->
-  <details class="beer-row">
-    <summary>
-      <span class="chev" aria-hidden="true">▶</span>
-      <span class="tap">1</span>
-      <span class="beer"><strong>Restitution</strong> — On Tap</span>
-      <span class="half">1</span>
-      <span class="sixth">1</span>
-    </summary>
-    <div class="notes">
-      Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.
-    </div>
-  </details>
-
-  <!-- Row 2 -->
-  <details class="beer-row">
-    <summary>
-      <span class="chev" aria-hidden="true">▶</span>
-      <span class="tap">2</span>
-      <span class="beer"><strong>Peach Sour</strong> — Fermenting</span>
-      <span class="half">0</span>
-      <span class="sixth">1</span>
-    </summary>
-    <div class="notes">
-      Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.
-    </div>
-  </details>
-
-  <!-- Row 3 -->
-  <details class="beer-row">
-    <summary>
-      <span class="chev" aria-hidden="true">▶</span>
-      <span class="tap">3</span>
-      <span class="beer"><strong>Octoberfest</strong> — Conditioning</span>
-      <span class="half">2</span>
-      <span class="sixth">0</span>
-    </summary>
-    <div class="notes">
-      Lagering at 38 °F. Ready mid-October.
-    </div>
-  </details>
-</div>
 
 🪖 In the Tanks (Coming Soon)
 
