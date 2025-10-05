@@ -1,3 +1,36 @@
+<link rel="stylesheet" href="/assets/css/beer.css">
+
+<details>
+  <summary>
+    <span class="tap">1</span>
+    <span><strong>Restitution</strong> — On Tap</span>
+    <span>1</span>
+    <span>1</span>
+  </summary>
+  <div class="notes">Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
+</details>
+
+<details>
+  <summary>
+    <span class="tap">2</span>
+    <span><strong>Peach Sour</strong> — Fermenting</span>
+    <span>0</span>
+    <span>1</span>
+  </summary>
+  <div class="notes">Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</div>
+</details>
+
+<details>
+  <summary>
+    <span class="tap">3</span>
+    <span><strong>Octoberfest</strong> — Conditioning</span>
+    <span>2</span>
+    <span>0</span>
+  </summary>
+  <div class="notes">Lagering at 38 °F. Ready mid-October.</div>
+</details>
+
+
 🍻 Brewery Production & Inventory
 <details>
   <summary>1 · <strong>Restitution</strong> — On Tap · 1/2: 1 · 1/6: 1</summary>
