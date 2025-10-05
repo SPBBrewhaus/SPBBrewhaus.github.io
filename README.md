@@ -1,75 +1,73 @@
 🍻 Brewery Production & Inventory
-<table>
-  <tr>
-    <th>Tap</th>
-    <th>Beer + Status</th>
-    <th>1/2 bbl</th>
-    <th>1/6 bbl</th>
-  </tr>
+<style>
+  details {
+    border: 1px solid #444;
+    border-radius: 6px;
+    margin: 6px 0;
+    padding: 4px 6px;
+    background: #1e1e1e; /* dark mode look */
+    color: #eaeaea;
+  }
+  summary {
+    display: grid;
+    grid-template-columns: 50px 1fr 70px 70px;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::before {
+    content: "▶";
+    margin-right: 6px;
+    transition: transform 0.2s;
+  }
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+  summary div {
+    padding: 4px 0;
+  }
+  .tap { text-align: center; }
+  .notes {
+    margin-top: 6px;
+    border-top: 1px solid #333;
+    padding-top: 6px;
+    font-style: italic;
+    color: #bbb;
+  }
+</style>
 
-  <!-- Row 1 -->
-  <tr>
-    <td colspan="4">
-      <details>
-        <summary>
-          <table width="100%">
-            <tr>
-              <td width="10%"><strong>1</strong></td>
-              <td width="60%"><strong>Restitution</strong> – On Tap</td>
-              <td width="15%">1</td>
-              <td width="15%">1</td>
-            </tr>
-          </table>
-        </summary>
-        <div>
-          <p><strong>Notes:</strong> Crisp amber ale, batch #23. Cleaned Sept 28; next rotation Oct 10.</p>
-        </div>
-      </details>
-    </td>
-  </tr>
+<details>
+  <summary>
+    <div class="tap">1</div>
+    <div><strong>Restitution</strong> – On Tap</div>
+    <div>1</div>
+    <div>1</div>
+  </summary>
+  <div class="notes">Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
+</details>
 
-  <!-- Row 2 -->
-  <tr>
-    <td colspan="4">
-      <details>
-        <summary>
-          <table width="100%">
-            <tr>
-              <td width="10%"><strong>2</strong></td>
-              <td width="60%"><strong>Peach Sour</strong> – Fermenting</td>
-              <td width="15%">0</td>
-              <td width="15%">1</td>
-            </tr>
-          </table>
-        </summary>
-        <div>
-          <p><strong>Notes:</strong> Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</p>
-        </div>
-      </details>
-    </td>
-  </tr>
+<details>
+  <summary>
+    <div class="tap">2</div>
+    <div><strong>Peach Sour</strong> – Fermenting</div>
+    <div>0</div>
+    <div>1</div>
+  </summary>
+  <div class="notes">Expected ABV 4.8%. Dry-hop Oct 7. Tart with local peach purée.</div>
+</details>
 
-  <!-- Row 3 -->
-  <tr>
-    <td colspan="4">
-      <details>
-        <summary>
-          <table width="100%">
-            <tr>
-              <td width="10%"><strong>3</strong></td>
-              <td width="60%"><strong>Octoberfest</strong> – Conditioning</td>
-              <td width="15%">2</td>
-              <td width="15%">0</td>
-            </tr>
-          </table>
-        </summary>
-        <div>
-          <p><strong>Notes:</strong> Lagering at 38 °F. Release mid-October.</p>
-        </div>
-      </details>
-    </td>
-  </tr>
-</table>
+<details>
+  <summary>
+    <div class="tap">3</div>
+    <div><strong>Octoberfest</strong> – Conditioning</div>
+    <div>2</div>
+    <div>0</div>
+  </summary>
+  <div class="notes">Lagering at 38 °F. Ready mid-October.</div>
+</details>
 
 
 
