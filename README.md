@@ -76,6 +76,10 @@
   // setInterval(render, 10 * 60 * 1000); // optional auto-refresh
 </script>
 
+<p><a href="https://docs.google.com/spreadsheets/d/13-oglKrmnpkJok_xEO7brLNmnetRz3XIkrc2gSXf4X0/edit?usp=sharing" target="_blank">
+  🔐 Staff Login to Update Inventory
+</a></p>
+<p><em>Note: updates appear automatically on this page after saving the sheet.</em></p>
 
 🪖 In the Tanks (Coming Soon)
 
