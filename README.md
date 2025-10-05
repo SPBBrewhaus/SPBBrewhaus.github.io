@@ -1,125 +1,36 @@
 <link rel="stylesheet" href="/assets/css/beer.css">
 
-<details>
-  <summary>
-    <span class="tap">1</span>
-    <span><strong>Restitution</strong> — On Tap</span>
-    <span>1</span>
-    <span>1</span>
-  </summary>
-  <div class="notes">Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
-</details>
+<div class="beer-table">
+  <details>
+    <summary>
+      <span class="tap">1</span>
+      <span class="beer"><strong>Restitution</strong> — On Tap</span>
+      <span class="half">1</span>
+      <span class="sixth">1</span>
+    </summary>
+    <div class="notes">Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
+  </details>
 
-<details>
-  <summary>
-    <span class="tap">2</span>
-    <span><strong>Peach Sour</strong> — Fermenting</span>
-    <span>0</span>
-    <span>1</span>
-  </summary>
-  <div class="notes">Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</div>
-</details>
+  <details>
+    <summary>
+      <span class="tap">2</span>
+      <span class="beer"><strong>Peach Sour</strong> — Fermenting</span>
+      <span class="half">0</span>
+      <span class="sixth">1</span>
+    </summary>
+    <div class="notes">Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</div>
+  </details>
 
-<details>
-  <summary>
-    <span class="tap">3</span>
-    <span><strong>Octoberfest</strong> — Conditioning</span>
-    <span>2</span>
-    <span>0</span>
-  </summary>
-  <div class="notes">Lagering at 38 °F. Ready mid-October.</div>
-</details>
-
-
-🍻 Brewery Production & Inventory
-<details>
-  <summary>1 · <strong>Restitution</strong> — On Tap · 1/2: 1 · 1/6: 1</summary>
-  <div>Notes: Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
-</details>
-
-<details>
-  <summary>2 · <strong>Peach Sour</strong> — Fermenting · 1/2: 0 · 1/6: 1</summary>
-  <div>Notes: Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</div>
-</details>
-
-<details>
-  <summary>3 · <strong>Octoberfest</strong> — Conditioning · 1/2: 2 · 1/6: 0</summary>
-  <div>Notes: Lagering at 38 °F. Ready mid-October.</div>
-</details>
-
-
-
-<style>
-  details {
-    border: 1px solid #444;
-    border-radius: 6px;
-    margin: 6px 0;
-    padding: 4px 6px;
-    background: #1e1e1e; /* dark mode look */
-    color: #eaeaea;
-  }
-  summary {
-    display: grid;
-    grid-template-columns: 50px 1fr 70px 70px;
-    align-items: center;
-    cursor: pointer;
-    list-style: none;
-  }
-  summary::-webkit-details-marker {
-    display: none;
-  }
-  summary::before {
-    content: "▶";
-    margin-right: 6px;
-    transition: transform 0.2s;
-  }
-  details[open] summary::before {
-    transform: rotate(90deg);
-  }
-  summary div {
-    padding: 4px 0;
-  }
-  .tap { text-align: center; }
-  .notes {
-    margin-top: 6px;
-    border-top: 1px solid #333;
-    padding-top: 6px;
-    font-style: italic;
-    color: #bbb;
-  }
-</style>
-
-<details>
-  <summary>
-    <div class="tap">1</div>
-    <div><strong>Restitution</strong> – On Tap</div>
-    <div>1</div>
-    <div>1</div>
-  </summary>
-  <div class="notes">Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
-</details>
-
-<details>
-  <summary>
-    <div class="tap">2</div>
-    <div><strong>Peach Sour</strong> – Fermenting</div>
-    <div>0</div>
-    <div>1</div>
-  </summary>
-  <div class="notes">Expected ABV 4.8%. Dry-hop Oct 7. Tart with local peach purée.</div>
-</details>
-
-<details>
-  <summary>
-    <div class="tap">3</div>
-    <div><strong>Octoberfest</strong> – Conditioning</div>
-    <div>2</div>
-    <div>0</div>
-  </summary>
-  <div class="notes">Lagering at 38 °F. Ready mid-October.</div>
-</details>
-
-
+  <details>
+    <summary>
+      <span class="tap">3</span>
+      <span class="beer"><strong>Octoberfest</strong> — Conditioning</span>
+      <span class="half">2</span>
+      <span class="sixth">0</span>
+    </summary>
+    <div class="notes">Lagering at 38 °F. Ready mid-October.</div>
+  </details>
+</div>
 
 🪖 In the Tanks (Coming Soon)
 
@@ -129,17 +40,17 @@
 - Available tanks: 1, 2, 4, 5, 6
 
 <details> <summary>⏳ On Deck</summary>
--She’s a Peach (7)
--Road Soda (2 sixels)
--99 Problems (3)
--Mole Stout (3)
--Cider (4 sixels)
--Juicy Haze (2 sixels)
--My Boy Blue (4)
--Jacks (2)
--Founders Sept (7)
--Hindsight (1 sixel)
--Founders Oct (7)
+- She’s a Peach (7)
+- Road Soda (2 sixels)
+- 99 Problems (3)
+- Mole Stout (3)
+- Cider (4 sixels)
+- Juicy Haze (2 sixels)
+- My Boy Blue (4)
+- Jacks (2)
+- Founders Sept (7)
+- Hindsight (1 sixel)
+- Founders Oct (7)
 </details>
 
 
