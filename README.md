@@ -71,8 +71,6 @@
 - NY IPA (Vista)
 
 
-markdown="1" (Jekyll/kramdown):
-
 
 
 <details>
