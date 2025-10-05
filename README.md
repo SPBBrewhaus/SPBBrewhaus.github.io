@@ -104,13 +104,7 @@
 - Available tanks: 1, 2, 4, 5, 6
 
 
-⚠️ Low Stock (Watch Closely)
 
-- Restitution — 9 cases, 1 keg
-- Sticky Fingers — 1 sixel
-- Straw Peach — 1 keg
-- Seltzer — 4 kegs
-- Gringo — 1 sixel
 
 
 🛠 To Brew (Next Batches)
