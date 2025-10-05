@@ -1,0 +1,8 @@
+details{border:1px solid #444;border-radius:6px;margin:6px 0;padding:4px 6px;background:#1e1e1e;color:#eaeaea}
+summary{display:grid;grid-template-columns:50px 1fr 70px 70px;align-items:center;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▶";margin-right:6px;transition:transform .2s}
+details[open] summary::before{transform:rotate(90deg)}
+summary>span{padding:4px 0}
+.tap{text-align:center}
+.notes{margin-top:6px;border-top:1px solid #333;padding-top:6px;font-style:italic;color:#bbb}
