@@ -28,7 +28,6 @@
     </tr>
   </tbody>
 </table>
-
 <table>
   <thead>
     <tr>
@@ -39,7 +38,6 @@
     </tr>
   </thead>
   <tbody>
-    <!-- Row 1 -->
     <tr>
       <td>1</td>
       <td>
@@ -51,8 +49,6 @@
       <td>1</td>
       <td>1</td>
     </tr>
-
-    <!-- Row 2 -->
     <tr>
       <td>2</td>
       <td>
@@ -60,7 +56,24 @@
           <summary><strong>Peach Sour</strong> – Fermenting</summary>
           <div><em>Notes:</em> Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</div>
         </details>
-      </td
+      </td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>
+        <details>
+          <summary><strong>Octoberfest</strong> – Conditioning</summary>
+          <div><em>Notes:</em> Lagering at 38 °F. Ready mid-October.</div>
+        </details>
+      </td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
 
 🪖 In the Tanks (Coming Soon)
 
