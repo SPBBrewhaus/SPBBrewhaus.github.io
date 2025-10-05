@@ -1,153 +1,82 @@
-
-<!-- === LIVE BEER TABLES (Upstairs / Downstairs) === -->
-<div id="beer-upstairs">
-  <h3>Upstairs — On Tap</h3>
-  <div id="upstairs-table">Loading…</div>
-</div>
-
-<div id="beer-downstairs" style="margin-top:1rem;">
-  <h3>Downstairs — On Tap</h3>
-  <div id="downstairs-table">Loading…</div>
-</div>
-
-<style>
-  /* Optional light styling (kept tiny & inline) */
-  #beer-upstairs h3, #beer-downstairs h3 { margin: 0.2rem 0 0.4rem; }
-  .beer-table { width: 100%; border-collapse: collapse; }
-  .beer-table th, .beer-table td { border: 1px solid #ddd; padding: 6px 8px; }
-  .beer-table th { background: #f5f3ee; text-align: left; }
-  .beer-note { color:#555; font-style:italic; font-size:0.92em; }
-</style>
+<div id="upstairs-table">Loading…</div>
+<div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
 
 <script>
-  // 1) Your published CSV URL (the one you gave me)
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
 
-  // 2) Which column names in the sheet mean “location”? (any one match will do)
-  const LOCATION_HEADERS = ["Location", "Area", "Floor", "Room", "Section"];
-
-  // 3) Expected column names for the table. We’ll try to map flexibly.
-  const CAND_TAP     = ["Tap", "#", "Tap #"];
-  const CAND_BEER    = ["Beer", "Beer Name", "Name", "Beer + Status", "Beer/Status"];
-  const CAND_STATUS  = ["Status", "State"]; // optional (we’ll combine Beer + Status if separate)
-  const CAND_HALF    = ["1/2", "Half", "1/2 bbl", "Half bbl", "Half Barrel", "Half_BBL"];
-  const CAND_SIXTH   = ["1/6", "Sixth", "1/6 bbl", "Sixth bbl", "Sixth Barrel", "Sixth_BBL"];
-  const CAND_NOTES   = ["Notes", "Note", "Comments", "Comment"]; // optional
-
-  // Utility: robust CSV parser (handles quotes and commas)
+  // Tiny CSV parser (handles quoted commas)
   function parseCSV(text) {
-    const rows = [];
-    let i = 0, field = '', row = [], inQuotes = false;
-    while (i < text.length) {
-      const c = text[i];
-      if (inQuotes) {
-        if (c === '"') {
-          if (text[i+1] === '"') { field += '"'; i++; } // escaped quote
-          else { inQuotes = false; }
-        } else field += c;
+    const out = []; let row = [], field = "", q = false;
+    for (let i=0; i<text.length; i++) {
+      const c = text[i], n = text[i+1];
+      if (q) {
+        if (c === '"' && n === '"') { field += '"'; i++; }
+        else if (c === '"') { q = false; }
+        else field += c;
       } else {
-        if (c === '"') inQuotes = true;
-        else if (c === ',') { row.push(field); field = ''; }
+        if (c === '"') q = true;
+        else if (c === ',') { row.push(field); field = ""; }
         else if (c === '\n' || c === '\r') {
-          if (c === '\r' && text[i+1] === '\n') i++;
-          row.push(field); field = '';
-          if (row.length > 1 || row[0] !== '') rows.push(row);
+          if (c === '\r' && n === '\n') i++;
+          row.push(field); field = "";
+          if (row.some(v => (v||"").trim() !== "")) out.push(row);
           row = [];
         } else field += c;
       }
-      i++;
     }
-    // last field
-    if (field.length || row.length) { row.push(field); rows.push(row); }
-    return rows;
+    if (field.length || row.length) { row.push(field); out.push(row); }
+    return out;
   }
 
-  // Case-insensitive header index lookup with candidate lists
-  function findIndex(headerRow, candidates) {
-    const lower = headerRow.map(h => (h || "").trim().toLowerCase());
-    for (const cand of candidates) {
-      const idx = lower.indexOf(cand.toLowerCase());
-      if (idx !== -1) return idx;
-    }
-    return -1;
-  }
-
-  // Build HTML table from rows
-  function buildTable(rows, headerMap) {
-    const { iTap, iBeer, iStatus, iHalf, iSixth, iNotes } = headerMap;
-
+  function buildTable(rows) {
     let html = '<table class="beer-table"><thead><tr>' +
                '<th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th>' +
                '</tr></thead><tbody>';
-
     for (const r of rows) {
-      const tap   = iTap   >= 0 ? (r[iTap]   || "") : "";
-      const beer  = iBeer  >= 0 ? (r[iBeer]  || "") : "";
-      const stat  = iStatus>= 0 ? (r[iStatus]|| "") : "";
-      const half  = iHalf  >= 0 ? (r[iHalf]  || "") : "";
-      const sixth = iSixth >= 0 ? (r[iSixth] || "") : "";
-      const notes = iNotes >= 0 ? (r[iNotes] || "") : "";
-
-      const beerStatus = stat ? `<strong>${beer}</strong> — ${stat}` : `<strong>${beer}</strong>`;
-
+      const tap   = r.tap ?? "";
+      const beer  = r.beer ?? "";
+      const stat  = r.status ?? "";
+      const half  = r.half ?? "";
+      const sixth = r.sixth ?? "";
+      const notes = r.notes ?? "";
       html += `<tr>
         <td>${tap}</td>
-        <td>${beerStatus}${notes ? `<div class="beer-note">${notes}</div>` : ""}</td>
+        <td><strong>${beer}</strong>${stat ? " — " + stat : ""}${notes ? `<div style="color:#555;font-style:italic">${notes}</div>` : ""}</td>
         <td>${half}</td>
         <td>${sixth}</td>
       </tr>`;
     }
-
     html += '</tbody></table>';
     return html;
   }
 
   async function render() {
-    try {
-      const res = await fetch(CSV_URL, { cache: "no-cache" });
-      const text = await res.text();
-      const rows = parseCSV(text);
-      if (!rows.length) throw new Error("Empty CSV");
+    const res = await fetch(CSV_URL, { cache: "no-cache" });
+    const rows = parseCSV(await res.text());
+    const header = rows[0].map(h => (h||"").trim().toLowerCase());
+    const data = rows.slice(1).map(r => ({
+      location: r[header.indexOf("location")] || "",
+      tap:      r[header.indexOf("tap")] || "",
+      beer:     r[header.indexOf("beer")] || "",
+      status:   r[header.indexOf("status")] || "",
+      half:     r[header.indexOf("1/2 bbl")] || "",
+      sixth:    r[header.indexOf("1/6 bbl")] || "",
+      notes:    r[header.indexOf("notes")] || "",
+    })).filter(x => Object.values(x).some(v => (v||"").trim() !== ""));
 
-      const header = rows[0];
-      const data = rows.slice(1).filter(r => r.some(v => (v || "").trim() !== "")); // drop blank rows
+    const upstairs   = data.filter(x => x.location.toLowerCase().includes("up"));
+    const downstairs = data.filter(x => x.location.toLowerCase().includes("down"));
 
-      // Map headers
-      const iLoc   = findIndex(header, LOCATION_HEADERS);
-      const iTap   = findIndex(header, CAND_TAP);
-      const iBeer  = findIndex(header, CAND_BEER);
-      const iStat  = findIndex(header, CAND_STATUS);
-      const iHalf  = findIndex(header, CAND_HALF);
-      const iSixth = findIndex(header, CAND_SIXTH);
-      const iNotes = findIndex(header, CAND_NOTES);
-
-      const headerMap = { iTap, iBeer, iStatus: iStat, iHalf, iSixth, iNotes };
-
-      // Split by location (expects values like "Upstairs" / "Downstairs")
-      let upstairs = data, downstairs = [];
-      if (iLoc >= 0) {
-        upstairs   = data.filter(r => (r[iLoc] || "").toLowerCase().includes("up"));
-        downstairs = data.filter(r => (r[iLoc] || "").toLowerCase().includes("down"));
-      }
-
-      // If no location column, try to infer: even/odd taps? (optional, comment out if unwanted)
-      if (iLoc === 0 - 1) {
-        upstairs   = data.filter(r => parseInt(r[iTap], 10) % 2 === 1); // odd taps
-        downstairs = data.filter(r => parseInt(r[iTap], 10) % 2 === 0); // even taps
-      }
-
-      document.getElementById("upstairs-table").innerHTML  =
-        upstairs.length ? buildTable(upstairs, headerMap) : "<em>No upstairs rows found.</em>";
-      document.getElementById("downstairs-table").innerHTML =
-        downstairs.length ? buildTable(downstairs, headerMap) : "<em>No downstairs rows found.</em>";
-    } catch (e) {
-      console.error(e);
-      document.getElementById("upstairs-table").textContent = "Failed to load sheet.";
-      document.getElementById("downstairs-table").textContent = "Failed to load sheet.";
-    }
+    document.getElementById("upstairs-table").innerHTML  =
+      upstairs.length ? buildTable(upstairs) : "<em>No Upstairs rows.</em>";
+    document.getElementById("downstairs-table").innerHTML =
+      downstairs.length ? buildTable(downstairs) : "<em>No Downstairs rows.</em>";
   }
 
   render();
+  // setInterval(render, 10 * 60 * 1000); // optional auto-refresh
+</script>
+
 
 
 🪖 In the Tanks (Coming Soon)
