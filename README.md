@@ -1,28 +1,60 @@
 🍻 Brewery Production & Inventory
-<table>
+<table id="tapTable">
   <tr>
-    <th>Beer</th>
-    <th>Status</th>
+    <th>Tap</th>
+    <th>Beer + Status</th>
+    <th>1/2 bbl</th>
+    <th>1/6 bbl</th>
   </tr>
 
-  <tr>
-    <td colspan="2">
-      <details>
-        <summary><strong>Restitution</strong> – On Tap</summary>
-        <p>Notes: Crisp amber ale. Batch #23 brewed Sept 28. Cleaning scheduled for Oct 10.</p>
-      </details>
+  <!-- Row 1 -->
+  <tr class="expandable">
+    <td>1</td>
+    <td><strong>Restitution</strong> – On Tap</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr class="notes">
+    <td colspan="4">
+      Notes: Crisp amber ale, batch #23. Cleaned Sept 28, next rotation Oct 10.
     </td>
   </tr>
 
-  <tr>
-    <td colspan="2">
-      <details>
-        <summary><strong>Peach Sour</strong> – Fermenting</summary>
-        <p>Notes: Expected ABV 4.8%. Dry-hopping on Oct 7.</p>
-      </details>
+  <!-- Row 2 -->
+  <tr class="expandable">
+    <td>2</td>
+    <td><strong>Peach Sour</strong> – Fermenting</td>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr class="notes">
+    <td colspan="4">
+      Notes: Expected ABV 4.8 %. Dry-hop Oct 7. Tart with local peach puree.
+    </td>
+  </tr>
+
+  <!-- Row 3 -->
+  <tr class="expandable">
+    <td>3</td>
+    <td><strong>Octoberfest</strong> – Conditioning</td>
+    <td>2</td>
+    <td>0</td>
+  </tr>
+  <tr class="notes">
+    <td colspan="4">
+      Notes: Lagering at 38 °F. Ready for release mid-October.
     </td>
   </tr>
 </table>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    background: #f8f5f0; /* beige tone */
+  }
+  th, td {
 
 🍻 Brewery Production & Inventory
 
