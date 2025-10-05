@@ -1,34 +1,4 @@
 
-<strong>Sheet A1 Value:</strong>
-<span id="sheet-value">Loading…</span>
-
-<script>
-  async function updateFromSheet() {
-    // your published CSV link
-    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
-
-    try {
-      const res = await fetch(url, { cache: "no-cache" });
-      const text = await res.text();
-
-      // split by newlines and commas
-      const rows = text.trim().split(/\r?\n/).map(r => r.split(","));
-
-      // A1 = row 0, column 0
-      const value = rows[0]?.[0] || "(empty)";
-
-      document.getElementById("sheet-value").textContent = value;
-    } catch (err) {
-      console.error("Fetch error:", err);
-      document.getElementById("sheet-value").textContent = "—";
-    }
-  }
-
-  updateFromSheet();
-  // Optional: auto-refresh every 10 minutes
-  // setInterval(updateFromSheet, 10 * 60 * 1000);
-</script>
-
 <!-- === LIVE BEER TABLES (Upstairs / Downstairs) === -->
 <div id="beer-upstairs">
   <h3>Upstairs — On Tap</h3>
