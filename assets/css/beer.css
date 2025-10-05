@@ -1,8 +1,42 @@
-details{border:1px solid #444;border-radius:6px;margin:6px 0;padding:4px 6px;background:#1e1e1e;color:#eaeaea}
-summary{display:grid;grid-template-columns:50px 1fr 70px 70px;align-items:center;cursor:pointer;list-style:none}
-summary::-webkit-details-marker{display:none}
-summary::before{content:"▶";margin-right:6px;transition:transform .2s}
-details[open] summary::before{transform:rotate(90deg)}
-summary>span{padding:4px 0}
-.tap{text-align:center}
-.notes{margin-top:6px;border-top:1px solid #333;padding-top:6px;font-style:italic;color:#bbb}
+.beer-table details {
+  background: #f8f5f0;      /* beige base */
+  border: 1px solid #c9c3b9;
+  border-radius: 8px;
+  margin: 6px 0;
+  padding: 6px 10px;
+  font-family: system-ui, sans-serif;
+  color: #222;
+}
+
+.beer-table summary {
+  display: grid;
+  grid-template-columns: 50px 1fr 70px 70px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.beer-table summary::-webkit-details-marker { display: none; }
+
+.beer-table summary::before {
+  content: "▶";
+  margin-right: 6px;
+  transition: transform 0.2s;
+  color: #7a6c5a;
+}
+
+.beer-table details[open] summary::before { transform: rotate(90deg); }
+
+.beer-table span { padding: 2px 0; }
+
+.beer-table .tap { text-align: center; font-weight: 600; }
+
+.beer-table .half, .beer-table .sixth { text-align: center; }
+
+.beer-table .notes {
+  margin-top: 6px;
+  border-top: 1px solid #ddd;
+  padding-top: 6px;
+  font-style: italic;
+  color: #444;
+}
