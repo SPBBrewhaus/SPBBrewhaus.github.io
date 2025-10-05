@@ -29,6 +29,38 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th>Tap</th>
+      <th>Beer + Status</th>
+      <th>1/2 bbl</th>
+      <th>1/6 bbl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Row 1 -->
+    <tr>
+      <td>1</td>
+      <td>
+        <details>
+          <summary><strong>Restitution</strong> – On Tap</summary>
+          <div><em>Notes:</em> Crisp amber ale, batch #23. Cleaned Sept 28. Next rotation Oct 10.</div>
+        </details>
+      </td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+
+    <!-- Row 2 -->
+    <tr>
+      <td>2</td>
+      <td>
+        <details>
+          <summary><strong>Peach Sour</strong> – Fermenting</summary>
+          <div><em>Notes:</em> Target ABV 4.8%. Dry-hop Oct 7. Local peach purée.</div>
+        </details>
+      </td
 
 🪖 In the Tanks (Coming Soon)
 
