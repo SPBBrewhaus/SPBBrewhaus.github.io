@@ -45,6 +45,38 @@ th, td {
 </head>
 <body>
 
+<style>
+/* Tweak global sizes (optional) */
+:root {
+  --body: 16px;
+  --h1: 1.6rem;   /* page title */
+  --h2: 1.15rem;  /* section titles like “In the Tanks” */
+  --table: 1.05rem; /* tables/lists content */
+}
+
+body { font-size: var(--body); }
+h1 { font-size: var(--h1) !important; margin: .2rem 0 .6rem; }
+h2, h3 { font-size: var(--h2) !important; margin: .8rem 0 .4rem; }
+
+/* FORCE size inside the inventory blocks */
+#downstairs-table,
+#upstairs-table,
+#ondeck-table,
+#party-table {
+  font-size: var(--table) !important;
+  line-height: 1.35;
+}
+
+/* Make all children inherit that size (covers td/th/li/summary/etc.) */
+#downstairs-table *, #upstairs-table *, #ondeck-table *, #party-table * {
+  font-size: inherit !important;
+}
+
+/* Nice table defaults (safe if you’re using real <table>s) */
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
+</style>
+
 <h2>SPBBrewhaus</h2>
 
 <!-- Live Beer Tables -->
