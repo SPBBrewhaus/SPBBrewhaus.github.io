@@ -141,74 +141,74 @@ details li {
 - NY Saaz
 - NY IPA (Vista)
 
-
 <details>
-  
   <summary>📄 Orders</summary>
   <div markdown="1">
-- Eagle (10/03): Restitution — 16 kegs, 12 sixels
 
+- **Eagle (10/03):** Restitution — 16 kegs, 12 sixels
+
+  </div>
 </details>
 
-
 <details>
-  
   <summary>🧻 Labels Needed</summary>
   <div markdown="1">
-  - **Upcoming Brews**
-    - Winter’s Knight
-    - Super Haze
-  - **Inventory**
-    - Boston South Irish Stout
-    - S’mores
-    - New West Coast
-    - Founders Sept
-    - Cherry Pineapple Sour
 
+- **Upcoming Brews**
+  - Winter’s Knight
+  - Super Haze
+- **Inventory**
+  - Boston South Irish Stout
+  - S’mores
+  - New West Coast
+  - Founders Sept
+  - Cherry Pineapple Sour
+
+  </div>
 </details>
 
-
 <details>
-  
   <summary>📦 Ingredients</summary>
+  <div markdown="1">
 
-  **Needed**
-  - Galaxy — 44 lbs
-  - Amarillo — 44 lbs
+**Needed**
+- Galaxy — 44 lbs
+- Amarillo — 44 lbs
 
 <details>
-  
   <summary>🌿 Hops On Hand</summary>
+  <div markdown="1">
 
-  **A–C**
-  - Amarillo — (5 lbs)
-  - Azacca — (33 lbs)
-  - Centennial — (221 lbs)
-  - Chinook — (5 lbs)
-  - Citra — (80 lbs)
-  
-  **D–N**
-  - El Dorado — (27 lbs)
-  - Mandarina — (5 lbs)
-  - Nugget — (27 lbs)
-  - NY Chinook — (11 lbs)
-  
-  **S–Z**
-  - Saaz — (11 lbs)
-  - Simcoe — (33 lbs)
-  - Vallestia — (38 lbs)
-  - Warrior — (5 lbs)
-  - Zeus — (33 lbs)
-  - 32 DE 2021 — (11 lbs)
+**A–C**
+- Amarillo — (5 lbs)
+- Azacca — (33 lbs)
+- Centennial — (221 lbs)
+- Chinook — (5 lbs)
+- Citra — (80 lbs)
 
+**D–N**
+- El Dorado — (27 lbs)
+- Mandarina — (5 lbs)
+- Nugget — (27 lbs)
+- NY Chinook — (11 lbs)
+
+**S–Z**
+- Saaz — (11 lbs)
+- Simcoe — (33 lbs)
+- Vallestia — (38 lbs)
+- Warrior — (5 lbs)
+- Zeus — (33 lbs)
+- 32 DE 2021 — (11 lbs)
+
+  </div>
 </details>
 
+  </div>
 </details>
-
 
 <details>
-  
   <summary>⚙️ Maintenance & Logs</summary>
+  <div markdown="1">
 
 ### ❄️ Glycol Chiller Log
 | Date       | Event |
@@ -226,10 +226,5 @@ details li {
 |------------|-------|
 | 2025-10-02 | Temp check — 40°F (normal). |
 
-
+  </div>
 </details>
-
-
-
-✍️ Compiled by Skyler Newberry
-
