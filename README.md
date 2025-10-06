@@ -145,7 +145,7 @@ details li {
 <details>
   
   <summary>📄 Orders</summary>
-
+  <div markdown="1">
 - Eagle (10/03): Restitution — 16 kegs, 12 sixels
 
 </details>
@@ -154,7 +154,7 @@ details li {
 <details>
   
   <summary>🧻 Labels Needed</summary>
-
+  <div markdown="1">
   - **Upcoming Brews**
     - Winter’s Knight
     - Super Haze
