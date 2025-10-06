@@ -19,8 +19,8 @@ details li {
 
 
 <!-- Live Beer Tables -->
-<div id="upstairs-table">Loading…</div>
-<div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
+<div id="downstairs-table"
+<div id="upstairs-table">Loading…</div> style="margin-top:1rem;">Loading…</div>
 <div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
 
 <script>
@@ -163,92 +163,6 @@ Gas levels:
 - 2x small CO2 tanks 
 
 
-<!-- Party Picker Section --><!-- Uses existing Google Sheets inventory data (already loaded in your site JS). --><!-- This section filters beers with >1 half keg available and lets Larry copy selected ones for an email. --><section id="party-picker" style="margin:1.5rem 0;padding:1rem;border:1px solid #ddd;border-radius:12px;background:#fff;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
-  <details open>
-    <summary style="cursor:pointer;font-weight:600;font-size:1.05rem">Party Picker — Select Beers for Events</summary><div style="margin:.75rem 0 .5rem;display:flex;gap:.5rem;flex-wrap:wrap">
-  <button id="party-refresh" type="button" style="padding:.45rem .75rem;border-radius:10px;border:1px solid #ccc;background:#fafafa;cursor:pointer">Refresh List</button>
-  <button id="party-copy" type="button" style="padding:.45rem .75rem;border-radius:10px;border:1px solid #ccc;background:#fafafa;cursor:pointer">Copy Selected to Clipboard</button>
-  <span id="party-status" style="margin-left:auto;color:#666"></span>
-</div>
-
-<div id="party-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem"></div>
-
-<label for="party-preview" style="display:block;margin-top:.75rem;font-size:.9rem;color:#555">Email preview:</label>
-<textarea id="party-preview" readonly style="width:100%;min-height:120px;margin-top:.25rem;border:1px solid #ddd;border-radius:10px;padding:.6rem;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"></textarea>
-
-  </details>
-</section><script>
-// Assuming inventory data already fetched elsewhere in window.INVENTORY
-(function(){
-  const $status = document.getElementById('party-status');
-  const $list = document.getElementById('party-list');
-  const $copy = document.getElementById('party-copy');
-  const $refresh = document.getElementById('party-refresh');
-  const $preview = document.getElementById('party-preview');
-
-  function setStatus(msg){ $status.textContent = msg || ''; }
-
-  function renderList(){
-    $list.innerHTML = '';
-    const items = (window.INVENTORY || []).filter(b => parseFloat(b["1/2 bbl"] || b.half || 0) > 1);
-    if(!items.length){
-      $list.innerHTML = '<div style="color:#666">No beers with more than 1 half keg available.</div>';
-      return;
-    }
-    items.forEach(b => {
-      const id = 'beer_' + Math.random().toString(36).slice(2,9);
-      const div = document.createElement('label');
-      div.htmlFor = id;
-      div.style.display = 'flex';
-      div.style.alignItems = 'flex-start';
-      div.style.gap = '.5rem';
-      div.style.border = '1px solid #eee';
-      div.style.borderRadius = '10px';
-      div.style.padding = '.5rem .6rem';
-      div.style.background = '#fcfcfc';
-
-      const cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.id = id;
-      cb.value = b.name || b.Beer || b["Beer Name"];
-      cb.dataset.half = b["1/2 bbl"] || b.half;
-      cb.dataset.sixth = b["1/6 bbl"] || b.sixth;
-
-      const info = document.createElement('div');
-      info.innerHTML = `<strong>${cb.value}</strong><br><small>1/2 bbl: ${cb.dataset.half || 0} · 1/6 bbl: ${cb.dataset.sixth || 0}</small>`;
-
-      div.appendChild(cb);
-      div.appendChild(info);
-      $list.appendChild(div);
-    });
-  }
-
-  function buildPreview(){
-    const selected = Array.from($list.querySelectorAll('input[type="checkbox"]:checked'));
-    if(!selected.length){ $preview.value = ''; return; }
-    const lines = ['Party beer picks based on current stock:', ''];
-    selected.forEach(cb => {
-      lines.push(`• ${cb.value} — 1/2 bbl: ${cb.dataset.half} | 1/6 bbl: ${cb.dataset.sixth}`);
-    });
-    lines.push('', 'Let me know if these work.');
-    $preview.value = lines.join('\n');
-  }
-
-  function copyPreview(){
-    if(!$preview.value){ setStatus('Nothing to copy'); return; }
-    navigator.clipboard.writeText($preview.value).then(()=>{
-      setStatus('Copied to clipboard');
-      setTimeout(()=>setStatus(''),1500);
-    }).catch(()=>setStatus('Copy failed'));
-  }
-
-  $copy.addEventListener('click', copyPreview);
-  $refresh.addEventListener('click', ()=>{ renderList(); buildPreview(); });
-  $list.addEventListener('change', buildPreview);
-
-  if(window.INVENTORY) renderList();
-})();
-</script>
 
 
 <details>
