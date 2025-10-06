@@ -85,6 +85,39 @@ details li { display:list-item !important; list-style-type:disc !important; }
   font-size: inherit !important;
   line-height: 1.4;
 }
+
+/* Constrain table line length so text doesn't feel tiny on wide screens */
+.table-wrap {
+  max-width: 880px;          /* adjust to taste: 720–960px is comfy */
+  margin: .25rem auto 1rem;  /* center it */
+  padding: 0 .25rem;         /* a little breathing room on mobile */
+}
+
+/* Keep tables readable and stable */
+.table-wrap table {
+  width: 100%;
+  table-layout: fixed;        /* stable column widths */
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.2rem);  /* scales gently */
+}
+
+/* Column sizing: give Beer column room; keep counts narrower */
+.table-wrap th:nth-child(1), .table-wrap td:nth-child(1) { width: 64px; }
+.table-wrap th:nth-child(3), .table-wrap td:nth-child(3),
+.table-wrap th:nth-child(4), .table-wrap td:nth-child(4),
+.table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { width: 96px; }
+
+/* Wrap long names/status nicely */
+.table-wrap td:nth-child(2) {
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Ensure cells inherit sizing and have reasonable leading */
+.table-wrap th, .table-wrap td {
+  font-size: inherit !important;
+  line-height: 1.4;
+}
+
 </style>
 
 <script>
@@ -123,8 +156,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (s.includes("out"))  return " ❌";
     return "";
   }
+function buildTable(rows) {
+  let html = `<div class="table-wrap"><table><thead><tr>
+    <th>Tap</th>
+    <th>Beer + Status</th>
+    <th>1/2 bbl</th>
+    <th>1/6 bbl</th>
+    <th>Cases of Cans</th>
+  </tr></thead><tbody>`;
 
-  function buildTable(rows) {
+  for (const r of rows) {
+    const icon  = getStockIcon(r.stock);
+    const notes = r.notes ? `<div class="muted">${r.notes}</div>` : "";
+    html += `<tr>
+      <td>${r.tap || ""}</td>
+      <td><strong>${r.beer || ""}${icon}</strong>${r.status ? " — " + r.status : ""}${notes}</td>
+      <td>${r.half || ""}</td>
+      <td>${r.sixth || ""}</td>
+      <td>${r.cans || ""}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+  return html;
+}
+  function buildTable2(rows) {
     let html = `<table><thead><tr>
       <th>Tap</th>
       <th>Beer + Status</th>
