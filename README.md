@@ -158,7 +158,23 @@ Gas levels:
 - Oxygen 900 psi 
 - 2x small CO2 tanks 
 
-  
+
+<details>
+  <summary>🔮 Future Maintenance</summary>
+  <div markdown="1">
+
+  - New water barrier 
+  - Fix Water Softener (If not already working)
+  - Paint floors
+  - Glycol chiller pump is currently bypass need new set of fuses 
+  - Update 5/27 received fuses, waiting to install
+  </div>
+</details>
+
+
+
+
+
 <details>
   <summary>📄 Orders</summary>
   <div markdown="1">
