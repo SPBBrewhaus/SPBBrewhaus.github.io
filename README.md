@@ -23,6 +23,11 @@ details li {
 <div id="upstairs-table" style="margin-top:1rem;">Loading…</div>
 <div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
 
+
+
+<div id="party-table" style="margin-top:1rem;"></div>
+
+
 <script>
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
 
@@ -109,7 +114,43 @@ details li {
     const downstairs = data.filter(x => x.location.toLowerCase().includes("down"));
     const ondeck     = data.filter(x => x.location.toLowerCase().includes("deck"));
 
-    document.getElementById("upstairs-table").innerHTML =
+// Example data structure (for reference)
+// const data = [
+//   { name: "Restitution", location: "On Deck", "1/2 bbl": "2", "1/6 bbl": "1" },
+//   { name: "Gringo", location: "Downstairs", "1/2 bbl": "1", "1/6 bbl": "0" }
+// ];
+
+function renderPartyList(data) {
+  // Filter beers where location includes "deck" AND 1/2 bbl > 1
+  const partyList = data.filter(x =>
+    x.location.toLowerCase().includes("deck") &&
+    parseFloat(x["1/2 bbl"]) > 1
+  );
+
+  const container = document.getElementById("party-table");
+
+  if (!partyList.length) {
+    container.innerHTML = "<em>No beers available for party (1/2 bbl > 1).</em>";
+    return;
+  }
+
+  // Build a simple HTML list
+  const listItems = partyList.map(x => `
+    <li>
+      <strong>${x.name}</strong> — 1/2 bbl: ${x["1/2 bbl"]} | 1/6 bbl: ${x["1/6 bbl"] || 0}
+    </li>
+  `).join("");
+
+  container.innerHTML = `
+    <h3>Party List (1/2 bbl > 1)</h3>
+    <ul>${listItems}</ul>
+  `;
+}
+
+// Call it after your data is ready
+// renderPartyList(data);
+
+ document.getElementById("upstairs-table").innerHTML =
       upstairs.length ? `<h3>Upstairs — On Tap</h3>${buildTable(upstairs)}` : "";
     document.getElementById("downstairs-table").innerHTML =
       downstairs.length ? `<h3>Downstairs — On Tap</h3>${buildTable(downstairs)}` : "";
