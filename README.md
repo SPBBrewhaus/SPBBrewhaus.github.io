@@ -155,7 +155,6 @@ details li {
 <!-- break -->
 <br>
 
-<br>
 <details>
   <summary>🧻 Labels Needed</summary>
   <div markdown="1">
@@ -178,7 +177,6 @@ details li {
 
 <br>
 
-<br>
 
 <details>
   <summary>📦 Ingredients</summary>
@@ -221,7 +219,6 @@ details li {
 
 <br>
 
-<br>
 
 <details>
   <summary>⚙️ Maintenance & Logs</summary>
