@@ -138,7 +138,7 @@ details li {
 - Winter’s Knight
 - Cranberry Saison
 - Super Haze
-- Seltzer ×4
+- Seltzer × 4
 - NY Saaz
 - NY IPA
 
