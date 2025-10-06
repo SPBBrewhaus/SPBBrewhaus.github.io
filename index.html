@@ -4,78 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SPBBrewhaus</title>
-<style>
-  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 20px; }
-  h2, h3 { color: #0b57d0; margin: .25rem 0; }
-  table { width: 100%; border-collapse: collapse; margin-top: 1.25rem; }
-  th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; vertical-align: top; }
-  th { background: #f5f3ee; }
-  details > ul,
-  details > ol,
-  details > div > ul,
-  details > div > ol { list-style: disc !important; margin-left: 1.5em !important; padding-left: 1em !important; }
-  details li { display: list-item !important; list-style-type: disc !important; }
-  .muted { color:#666; font-style: italic; }
 
-/* Match heading and table font sizes more closely */
-h2, h3 {
-  font-size: 1.2rem; /* slightly smaller than default */
-  margin-bottom: 0.5rem;
-}
-
-/* Increase table text size slightly */
-table {
-  font-size: 1rem;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-/* Optional: make it look cleaner */
-th, td {
-  padding: 6px 8px;
-  border-bottom: 1px solid #ccc;
-}
-
-#downstairs-table, #upstairs-table, #ondeck-table {
-  margin-top: 1rem;
-  font-size: 1.5rem; /* adjust this to taste */
-  line-height: 1.4;
-}
-</style>
 </head>
 <body>
-
-<style>
-/* Tweak global sizes (optional) */
-:root {
-  --body: 16px;
-  --h1: 1.6rem;   /* page title */
-  --h2: 1.15rem;  /* section titles like “In the Tanks” */
-  --table: 1.05rem; /* tables/lists content */
-}
-
-body { font-size: var(--body); }
-h1 { font-size: var(--h1) !important; margin: .2rem 0 .6rem; }
-h2, h3 { font-size: var(--h2) !important; margin: .8rem 0 .4rem; }
-
-/* FORCE size inside the inventory blocks */
-#downstairs-table,
-#upstairs-table,
-#ondeck-table,
-#party-table {
-  font-size: var(--table) !important;
-  line-height: 1.35;
-}
-
-/* Make all children inherit that size (covers td/th/li/summary/etc.) */
-#downstairs-table *, #upstairs-table *, #ondeck-table *, #party-table * {
-  font-size: inherit !important;
-}
-
-/* Nice table defaults (safe if you’re using real <table>s) */
-table { width: 100%; border-collapse: collapse; }
-th, td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
-</style>
 
 <h2>SPBBrewhaus</h2>
 
@@ -83,6 +14,59 @@ th, td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
 <div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
 <div id="upstairs-table"   style="margin-top:1rem;">Loading…</div>
 <div id="ondeck-table"     style="margin-top:1rem;">Loading…</div>
+
+
+<style>
+/* Base */
+html { font-size: 16px; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.45;
+  color: #111;
+}
+
+/* Scale knobs */
+:root{
+  --title: 1.4rem;     /* page title (SPBBrewhaus) */
+  --section: 1.2rem;   /* section headers (h3 like “Upstairs — On Tap”) */
+  --content: 1.12rem;  /* tables & lists */
+}
+
+/* Headings */
+h2 { color:#0b57d0; font-size: var(--title); margin:.25rem 0 .75rem; }
+h3 { color:#0b57d0; font-size: var(--section); margin:.75rem 0 .35rem; }
+
+/* Inventory blocks: make content match section scale */
+#downstairs-table, #upstairs-table, #ondeck-table, #party-table {
+  font-size: var(--content);   /* everything inside uses this size */
+}
+
+/* Make ALL children inherit exactly (th, td, strong, list items, etc.) */
+#downstairs-table *, #upstairs-table *, #ondeck-table *, #party-table * {
+  font-size: inherit !important;
+}
+
+/* Tables */
+table { width:100%; border-collapse:collapse; margin-top:.6rem; }
+th, td { border:1px solid #ddd; padding:6px 8px; text-align:left; vertical-align:top; }
+th { background:#f5f3ee; font-weight:600; }
+
+/* Lists inside <details> */
+details > ul,
+details > ol,
+details > div > ul,
+details > div > ol { list-style:disc !important; margin-left:1.5em !important; padding-left:1em !important; }
+details li { display:list-item !important; list-style-type:disc !important; }
+
+/* Muted text */
+.muted { color:#666; font-style:italic; }
+
+/* Optional: responsive gentle scaling */
+@media (max-width: 420px){
+  :root { --title: 1.35rem; --section: 1.18rem; --content: 1.1rem; }
+}
+</style>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
