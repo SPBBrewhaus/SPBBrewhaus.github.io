@@ -219,27 +219,6 @@ details li {
   <summary>⚙️ Maintenance & Logs</summary>
   <div markdown="1">
 
-### ❄️ Glycol Chiller Log
-
-| Date       | Event |
-|------------|-------|
-| 2025-09-01 | Chiller off → glycol very low, topped off, retarted. |
-
-### 🔥 Kettle Log
-
-| Date       | Event |
-|------------|-------|
-| 2025-09-22 | Left boils on → scorch; running caustic + acid cycle. |
-
-### 🧊 Big Cooler Log
-
-| Date       | Event |
-|------------|-------|
-| 2025-10-02 | Temp check — 40°F (normal). |
-
-  </div>
-</details>
-
 
 <!-- Replace the Markdown tables with this container -->
 <div id="maintenance" style="margin-top:.75rem;">Loading maintenance…</div>
@@ -327,3 +306,5 @@ details li {
 })();
 </script>
 
+  </div>
+</details>
