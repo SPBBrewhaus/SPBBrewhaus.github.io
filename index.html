@@ -93,13 +93,25 @@ details li { display:list-item !important; list-style-type:disc !important; }
   padding: 0 .25rem;         /* a little breathing room on mobile */
 }
 
-/* Keep tables readable and stable */
+/* --- Cross-browser table wrapping fix --- */
 .table-wrap table {
-  width: 100%;
-  table-layout: fixed;        /* stable column widths */
-  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.2rem);  /* scales gently */
+  table-layout: auto;                /* allow natural column sizing */
 }
 
+.table-wrap th:nth-child(2),
+.table-wrap td:nth-child(2) {
+  white-space: normal;               /* allow normal wrapping */
+  word-break: normal;                /* don't break inside words */
+  overflow-wrap: break-word;         /* wrap long strings if needed */
+  hyphens: auto;
+  min-width: 16ch;                   /* give the Beer + Status column some room */
+}
+
+/* keep the small numeric columns narrow */
+.table-wrap th:nth-child(1), .table-wrap td:nth-child(1) { width: 4.5rem; }
+.table-wrap th:nth-child(3), .table-wrap td:nth-child(3),
+.table-wrap th:nth-child(4), .table-wrap td:nth-child(4),
+.table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { width: 5.5rem; }
 /* Column sizing: give Beer column room; keep counts narrower */
 .table-wrap th:nth-child(1), .table-wrap td:nth-child(1) { width: 64px; }
 .table-wrap th:nth-child(3), .table-wrap td:nth-child(3),
