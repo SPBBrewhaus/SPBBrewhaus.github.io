@@ -311,5 +311,11 @@ details li {
 })();
 </script>
 
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeMIzh7LHuZMFyK7xNuJIg30oSsXO_VFRJEswS-piHc_RX37A/viewform" target="_blank">
+  🔐 Staff Login to Update log
+</a></p>
+<p><em>Note: updates appear automatically on this page after saving the sheet.</em></p>
+
+
   </div>
 </details>
