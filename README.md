@@ -216,25 +216,27 @@ details li {
 
 
 <details>
-  
-<summary>⚙️ Maintenance & Logs</summary>
-<div markdown="1">
+  <summary>⚙️ Maintenance & Logs</summary>
+  <div markdown="1">
 
 ### ❄️ Glycol Chiller Log
+
 | Date       | Event |
 |------------|-------|
-| 2025-09-01 | Chiller off → glycol very low, topped off with glycol + water, restarted. |
-| 2025-05-27 | New set of fuses received, waiting to install (pump bypassed). |
+| 2025-09-01 | Chiller off → glycol very low, topped off, retarted. |
 
 ### 🔥 Kettle Log
+
 | Date       | Event |
 |------------|-------|
-| 2025-09-22 | Accidentally left boils on → burn tops. Second brew proceeding. Investigating with caustic + acid cycle. |
+| 2025-09-22 | Left boils on → scorch; running caustic + acid cycle. |
 
 ### 🧊 Big Cooler Log
+
 | Date       | Event |
 |------------|-------|
 | 2025-10-02 | Temp check — 40°F (normal). |
 
   </div>
 </details>
+
