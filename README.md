@@ -1,14 +1,15 @@
 <style>
-details ul {
-  list-style-type: disc !important;
+details > ul,
+details > ol,
+details > div > ul,
+details > div > ol {
+  list-style: disc !important;
   margin-left: 1.5em !important;
-}
-details ol {
-  list-style-type: decimal !important;
-  margin-left: 1.5em !important;
+  padding-left: 1em !important;
 }
 details li {
   display: list-item !important;
+  list-style-type: disc !important;
 }
 </style>
 
