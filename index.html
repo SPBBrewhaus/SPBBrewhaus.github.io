@@ -68,6 +68,25 @@ details li { display:list-item !important; list-style-type:disc !important; }
 }
 </style>
 
+<style>
+/* Force table font size to match body text */
+#downstairs-table table,
+#upstairs-table table,
+#ondeck-table table,
+#party-table table {
+  font-size: 1.1rem !important;   /* bump this up or down as needed */
+}
+
+/* Ensure header and cell text follow the same scale */
+#downstairs-table th, #downstairs-table td,
+#upstairs-table th, #upstairs-table td,
+#ondeck-table th, #ondeck-table td,
+#party-table th, #party-table td {
+  font-size: inherit !important;
+  line-height: 1.4;
+}
+</style>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   // 🔁 Replace with your PUBLISHED-TO-WEB CSV URL for the main “Inventory” sheet
