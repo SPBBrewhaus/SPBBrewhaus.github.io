@@ -142,6 +142,22 @@ details li {
 - NY Saaz
 - NY IPA
 
+
+⚗️ Chemicals:
+
+- PAA: 50% with 2 backup 
+- CAUSTIC: 15% with 1 backup 
+- FOAMING CAUSTIC: 80%
+- LP acid 25% with 1 backup 
+- Glycol 40%
+
+Gas levels:
+
+- CO2 118 psi
+- Nitrogen 1600 psi (No back-up) 
+- Oxygen 900 psi 
+- 2x small CO2 tanks 
+
   
 <details>
   <summary>📄 Orders</summary>
