@@ -131,8 +131,6 @@ details li {
 
 
 
-
-
 🛠 To Brew (Next Batches)
 
 - Winter’s Knight
@@ -170,6 +168,7 @@ details li {
 
 
 <details>
+  
   <summary>📦 Ingredients</summary>
 
 **Needed**
@@ -177,6 +176,7 @@ details li {
 - Amarillo — 44 lbs
 
 <details>
+  
   <summary>🌿 Hops On Hand</summary>
 
 **A–C**
@@ -206,6 +206,7 @@ details li {
 
 
 <details>
+  
   <summary>⚙️ Maintenance & Logs</summary>
 
 ### ❄️ Glycol Chiller Log
