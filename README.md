@@ -23,7 +23,7 @@ details li {
 <div id="upstairs-table" style="margin-top:1rem;">Loading…</div>
 <div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
 
-<!-- live beers for party -->
+ live beers for party 
 
 <div id="party-table" style="margin-top:1rem;"></div>
 
