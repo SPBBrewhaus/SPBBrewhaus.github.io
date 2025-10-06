@@ -1,4 +1,16 @@
-
+<style>
+details ul {
+  list-style-type: disc !important;
+  margin-left: 1.5em !important;
+}
+details ol {
+  list-style-type: decimal !important;
+  margin-left: 1.5em !important;
+}
+details li {
+  display: list-item !important;
+}
+</style>
 
 
 <!-- Live Beer Tables -->
