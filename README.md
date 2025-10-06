@@ -123,7 +123,8 @@ details li {
 </a></p>
 <p><em>Note: updates appear automatically on this page after saving the sheet.</em></p>
 
-🪖 In the Tanks (Coming Soon)
+
+🪖 In the Tanks 
 
 - Tank 3 → S'mores
 - Tank 7 → Restitution
