@@ -155,15 +155,15 @@ details li {
   
   <summary>🧻 Labels Needed</summary>
 
-- **Upcoming Brews**
-  - Winter’s Knight
-  - Super Haze
-- **Inventory**
-  - Boston South Irish Stout
-  - S’mores
-  - New West Coast
-  - Founders Sept
-  - Cherry Pineapple Sour
+  - **Upcoming Brews**
+    - Winter’s Knight
+    - Super Haze
+  - **Inventory**
+    - Boston South Irish Stout
+    - S’mores
+    - New West Coast
+    - Founders Sept
+    - Cherry Pineapple Sour
 
 </details>
 
@@ -172,9 +172,9 @@ details li {
   
   <summary>📦 Ingredients</summary>
 
-**Needed**
-- Galaxy — 44 lbs
-- Amarillo — 44 lbs
+  **Needed**
+  - Galaxy — 44 lbs
+  - Amarillo — 44 lbs
 
 <details>
   
