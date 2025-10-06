@@ -140,7 +140,6 @@ details li {
 - Seltzer ×4
 - NY Saaz
 - NY IPA 
-
 <details>
   <summary>📄 Orders</summary>
   <div markdown="1">
@@ -204,7 +203,6 @@ details li {
 
   </div>
 </details>
-
 
   </div>
 </details>
