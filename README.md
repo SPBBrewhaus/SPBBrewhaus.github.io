@@ -122,8 +122,7 @@ details li {
 
 function renderPartyList(data) {
   // Filter beers where location includes "deck" AND 1/2 bbl > 1
-  const partyList = data.filter(x =>
-    x.location.toLowerCase().includes("deck") &&
+  const partyList = data.filter(x =
     parseFloat(x["1/2 bbl"]) > 1
   );
 
