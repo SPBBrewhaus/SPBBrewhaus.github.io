@@ -118,6 +118,7 @@
 
 
 <details>
+  
   <summary>📄 Orders</summary>
 
 - Eagle (10/03): Restitution — 16 kegs, 12 sixels
@@ -126,6 +127,7 @@
 
 
 <details>
+  
   <summary>🧻 Labels Needed</summary>
 
 - **Upcoming Brews**
