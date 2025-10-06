@@ -30,7 +30,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   // 🔁 Replace with your PUBLISHED-TO-WEB CSV URL for the main “Inventory” sheet
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?gid=0&single=true&output=csv";
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
 
   function parseCSV(text) {
     const out = []; let row = [], field = "", q = false;
