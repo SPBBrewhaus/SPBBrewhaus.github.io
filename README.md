@@ -214,7 +214,8 @@ Gas levels:
   <summary>📦 Ingredients</summary>
   <div markdown="1">
 
-  **Needed**
+   
+   **Needed**
   - Galaxy — 44 lbs
   - Amarillo — 44 lbs
 
