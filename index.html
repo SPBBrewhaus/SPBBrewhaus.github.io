@@ -118,6 +118,32 @@ details li { display:list-item !important; list-style-type:disc !important; }
   line-height: 1.4;
 }
 
+/* Make the maintenance tables the same readable size as inventory tables */
+#maintenance {
+  font-size: 1.15rem;       /* or use var(--content) if you prefer */
+  line-height: 1.4;
+}
+
+#maintenance table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: inherit !important;  /* inherit from #maintenance */
+  margin-top: .6rem;
+}
+
+#maintenance th,
+#maintenance td {
+  font-size: inherit !important;
+  line-height: 1.4;
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+}
+
+#maintenance th {
+  background: #f5f3ee;
+  font-weight: 600;
+}
+
 </style>
 
 <script>
