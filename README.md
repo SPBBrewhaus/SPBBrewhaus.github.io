@@ -140,7 +140,9 @@ details li {
 - Super Haze
 - Seltzer ×4
 - NY Saaz
-- NY IPA 
+- NY IPA
+
+  
 <details>
   <summary>📄 Orders</summary>
   <div markdown="1">
