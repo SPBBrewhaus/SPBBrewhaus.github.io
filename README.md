@@ -1,19 +1,34 @@
 
 
 
-
-
+<!-- Live Beer Tables -->
 <div id="upstairs-table">Loading…</div>
 <div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
 <div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
 
 <script>
+  // === 1) POINT THIS AT YOUR PUBLISHED CSV ===
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
 
+  // === 2) EXPECTED HEADERS (case-insensitive) ===
+  // Use these in your sheet: Location, Tap, Beer, Status, 1/2 bbl, 1/6 bbl, Cases of Cans, Stock Status, Notes
+  const H = {
+    location: ["location","area","section","floor"],
+    tap: ["tap","tap #","#"],
+    beer: ["beer","beer name","name","beer + status","beer/status"],
+    status: ["status","state"],
+    half: ["1/2 bbl","half","half bbl","half barrel","1/2"],
+    sixth: ["1/6 bbl","sixth","sixth bbl","sixth barrel","1/6"],
+    cans: ["cases of cans","cases (cans)","cases","cans"],
+    stock: ["stock status","stock","level"],
+    notes: ["notes","note","comments","comment"]
+  };
+
+  // === CSV parser (handles quotes/commas) ===
   function parseCSV(text) {
     const out = []; let row = [], field = "", q = false;
-    for (let i = 0; i < text.length; i++) {
-      const c = text[i], n = text[i + 1];
+    for (let i=0; i<text.length; i++) {
+      const c = text[i], n = text[i+1];
       if (q) {
         if (c === '"' && n === '"') { field += '"'; i++; }
         else if (c === '"') q = false;
@@ -24,7 +39,7 @@
         else if (c === '\n' || c === '\r') {
           if (c === '\r' && n === '\n') i++;
           row.push(field); field = "";
-          if (row.some(v => (v || "").trim() !== "")) out.push(row);
+          if (row.some(v => (v||"").trim() !== "")) out.push(row);
           row = [];
         } else field += c;
       }
@@ -33,63 +48,127 @@
     return out;
   }
 
-  function getStatusIcon(status) {
-    if (!status) return "";
-    const s = status.trim().toLowerCase();
-    if (s.startsWith("good")) return "✅";
-    if (s.startsWith("low")) return "🟡";
-    if (s.startsWith("out")) return "❌";
-    return "";
+  // Case-insensitive header index
+  function findIndex(headerRow, candidates) {
+    const lower = headerRow.map(h => (h||"").trim().toLowerCase());
+    for (const cand of candidates) {
+      const idx = lower.indexOf(cand);
+      if (idx !== -1) return idx;
+    }
+    return -1;
   }
 
+  function pickIndexes(headerRow) {
+    return {
+      iLoc:   findIndex(headerRow, H.location),
+      iTap:   findIndex(headerRow, H.tap),
+      iBeer:  findIndex(headerRow, H.beer),
+      iStat:  findIndex(headerRow, H.status),
+      iHalf:  findIndex(headerRow, H.half),
+      iSixth: findIndex(headerRow, H.sixth),
+      iCans:  findIndex(headerRow, H.cans),
+      iStock: findIndex(headerRow, H.stock),
+      iNotes: findIndex(headerRow, H.notes),
+    };
+  }
+
+  // Icon + row color from stock status
+  function stockIconAndBg(status) {
+    const s = (status||"").trim().toLowerCase();
+    if (s.startsWith("good")) return { icon:"✅", bg:"#ecf9f1" };   // light green
+    if (s.startsWith("low"))  return { icon:"🟡", bg:"#fff9e6" };   // light yellow
+    if (s.startsWith("out"))  return { icon:"❌", bg:"#fdecea" };   // light red
+    return { icon:"", bg:"" };
+  }
+
+  // Build one table’s HTML (inline styles only)
   function buildTable(rows) {
-    let html = '<table class="beer-table"><thead><tr>' +
-               '<th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th><th>Cases of Cans</th><th>Stock</th>' +
-               '</tr></thead><tbody>';
+    const th = 'style="border:1px solid #ddd;padding:6px 8px;text-align:left;background:#f5f3ee"';
+    const td = 'style="border:1px solid #ddd;padding:6px 8px;vertical-align:top"';
+    let html = `<table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th ${th}>Tap</th>
+          <th ${th}>Beer + Status</th>
+          <th ${th}>1/2 bbl</th>
+          <th ${th}>1/6 bbl</th>
+          <th ${th}>Cases of Cans</th>
+          <th ${th} style="text-align:center">Stock</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
     for (const r of rows) {
-      html += `<tr>
-        <td>${r.tap || ""}</td>
-        <td><strong>${r.beer || ""}</strong>${r.status ? " — " + r.status : ""}${r.notes ? `<div style="color:#555;font-style:italic">${r.notes}</div>` : ""}</td>
-        <td>${r.half || ""}</td>
-        <td>${r.sixth || ""}</td>
-        <td>${r.cans || ""}</td>
-        <td style="text-align:center;font-size:1.2em">${getStatusIcon(r.stock)}</td>
+      const { icon, bg } = stockIconAndBg(r.stock);
+      const rowStyle = bg ? ` style="background:${bg}"` : "";
+      const notes = r.notes ? `<div style="color:#555;font-style:italic">${r.notes}</div>` : "";
+      html += `<tr${rowStyle}>
+        <td ${td}>${r.tap||""}</td>
+        <td ${td}><strong>${r.beer||""}</strong>${r.status? " — " + r.status : ""}${notes}</td>
+        <td ${td}>${r.half||""}</td>
+        <td ${td}>${r.sixth||""}</td>
+        <td ${td}>${r.cans||""}</td>
+        <td ${td} style="text-align:center;font-size:1.15em">${icon}</td>
       </tr>`;
     }
-    html += '</tbody></table>';
+
+    html += `</tbody></table>`;
     return html;
   }
 
   async function render() {
-    const res = await fetch(CSV_URL, { cache: "no-cache" });
-    const rows = parseCSV(await res.text());
-    const header = rows[0].map(h => (h || "").trim().toLowerCase());
-    const data = rows.slice(1).map(r => ({
-      location: r[header.indexOf("location")] || "",
-      tap:      r[header.indexOf("tap")] || "",
-      beer:     r[header.indexOf("beer")] || "",
-      status:   r[header.indexOf("status")] || "",
-      half:     r[header.indexOf("1/2 bbl")] || "",
-      sixth:    r[header.indexOf("1/6 bbl")] || "",
-      cans:     r[header.indexOf("cases of cans")] || "",
-      stock:    r[header.indexOf("stock status")] || "",
-      notes:    r[header.indexOf("notes")] || "",
-    }));
+    try {
+      const res = await fetch(CSV_URL, { cache: "no-cache" });
+      const rows = parseCSV(await res.text());
+      if (!rows.length) throw new Error("Empty CSV");
 
-    const upstairs   = data.filter(x => x.location.toLowerCase().includes("up"));
-    const downstairs = data.filter(x => x.location.toLowerCase().includes("down"));
-    const ondeck     = data.filter(x => x.location.toLowerCase().includes("deck"));
+      const header = rows[0];
+      const idx = pickIndexes(header);
+      // Minimal header sanity check
+      const required = [idx.iLoc, idx.iBeer];
+      if (required.some(i => i === -1)) {
+        document.getElementById("upstairs-table").innerHTML = "<em>Missing required columns. Expected at least: Location, Beer.</em>";
+        return;
+      }
 
-    document.getElementById("upstairs-table").innerHTML =
-      upstairs.length ? `<h3>Upstairs — On Tap</h3>${buildTable(upstairs)}` : "";
-    document.getElementById("downstairs-table").innerHTML =
-      downstairs.length ? `<h3>Downstairs — On Tap</h3>${buildTable(downstairs)}` : "";
-    document.getElementById("ondeck-table").innerHTML =
-      ondeck.length ? `<h3>On Deck</h3>${buildTable(ondeck)}` : "";
+      const data = rows.slice(1)
+        .map(r => ({
+          location: r[idx.iLoc]   || "",
+          tap:      idx.iTap   >=0 ? r[idx.iTap]   : "",
+          beer:     idx.iBeer  >=0 ? r[idx.iBeer]  : "",
+          status:   idx.iStat  >=0 ? r[idx.iStat]  : "",
+          half:     idx.iHalf  >=0 ? r[idx.iHalf]  : "",
+          sixth:    idx.iSixth >=0 ? r[idx.iSixth] : "",
+          cans:     idx.iCans  >=0 ? r[idx.iCans]  : "",
+          stock:    idx.iStock >=0 ? r[idx.iStock] : "",
+          notes:    idx.iNotes >=0 ? r[idx.iNotes] : "",
+        }))
+        .filter(x => Object.values(x).some(v => (v||"").toString().trim() !== ""));
+
+      const upstairs   = data.filter(x => x.location.toLowerCase().includes("up"));
+      const downstairs = data.filter(x => x.location.toLowerCase().includes("down"));
+      const ondeck     = data.filter(x => x.location.toLowerCase().includes("deck"));
+
+      document.getElementById("upstairs-table").innerHTML  =
+        upstairs.length ? `<h3 style="margin:0.2rem 0 0.4rem">Upstairs — On Tap</h3>${buildTable(upstairs)}` : "";
+
+      document.getElementById("downstairs-table").innerHTML =
+        downstairs.length ? `<h3 style="margin:0.2rem 0 0.4rem">Downstairs — On Tap</h3>${buildTable(downstairs)}` : "";
+
+      document.getElementById("ondeck-table").innerHTML =
+        ondeck.length ? `<h3 style="margin:0.2rem 0 0.4rem">On Deck</h3>${buildTable(ondeck)}` : "";
+    } catch (e) {
+      console.error(e);
+      document.getElementById("upstairs-table").textContent  = "Failed to load sheet.";
+      document.getElementById("downstairs-table").textContent = "Failed to load sheet.";
+      document.getElementById("ondeck-table").textContent     = "Failed to load sheet.";
+    }
   }
 
   render();
+  // setInterval(render, 10 * 60 * 1000); // optional auto-refresh
 </script>
+
 
 <p><a href="https://docs.google.com/spreadsheets/d/13-oglKrmnpkJok_xEO7brLNmnetRz3XIkrc2gSXf4X0/edit?usp=sharing" target="_blank">
   🔐 Staff Login to Update Inventory
