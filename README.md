@@ -240,3 +240,90 @@ details li {
   </div>
 </details>
 
+
+<!-- Replace the Markdown tables with this container -->
+<div id="maintenance" style="margin-top:.75rem;">Loading maintenance…</div>
+
+<script>
+(function () {
+  // Published CSV for the Maintenance tab (your gid)
+  const MAINT_CSV_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?gid=2038532004&single=true&output=csv";
+
+  // Use your existing parser if present; else fallback
+  const csvParse = (typeof window.parseCSV === "function") ? window.parseCSV : function (text) {
+    const out = []; let row = [], field = "", q = false;
+    for (let i=0;i<text.length;i++){
+      const c=text[i], n=text[i+1];
+      if(q){ if(c==='"'&&n==='"'){field+='"';i++;} else if(c==='"'){q=false;} else {field+=c;} }
+      else { if(c==='"'){q=true;}
+        else if(c===','){row.push(field); field="";}
+        else if(c==='\n'||c==='\r'){ if(c==='\r'&&n==='\n') i++; row.push(field); field=""; if(row.some(v=>(v||"").trim()!=="")) out.push(row); row=[];}
+        else {field+=c;}
+      }
+    }
+    if(field.length||row.length){ row.push(field); out.push(row); }
+    return out;
+  };
+
+  function buildTable(rows, iDate, iEvent) {
+    const th='style="border:1px solid #ddd;padding:6px 8px;background:#f5f3ee;text-align:left"';
+    const td='style="border:1px solid #ddd;padding:6px 8px;vertical-align:top"';
+    let html = `<table style="width:100%;border-collapse:collapse"><thead><tr>
+      <th ${th}>Date</th><th ${th}>Event</th></tr></thead><tbody>`;
+    for (const r of rows) {
+      html += `<tr><td ${td}>${r[iDate]||""}</td><td ${td}>${r[iEvent]||""}</td></tr>`;
+    }
+    html += `</tbody></table>`;
+    return html;
+  }
+
+  async function renderMaintenance() {
+    try {
+      const res = await fetch(MAINT_CSV_URL, { cache: "no-cache" });
+      const rows = csvParse(await res.text());
+      if (!rows.length) throw new Error("Empty CSV");
+
+      const header = rows[0].map(h => (h||"").trim().toLowerCase());
+      const iSys   = header.indexOf("system");
+      const iDate  = header.indexOf("date");
+      const iEvent = header.indexOf("event");
+      if (iSys < 0 || iDate < 0 || iEvent < 0) {
+        document.getElementById("maintenance").innerHTML =
+          "<em>Expected headers: System, Date, Event.</em>";
+        return;
+      }
+
+      // Clean & group by System
+      const data = rows.slice(1).filter(r => r.some(v => (v||"").trim() !== ""));
+      const groups = {};
+      for (const r of data) {
+        const key = (r[iSys] || "Other").trim();
+        (groups[key] ||= []).push(r);
+      }
+
+      // Optional: sort each group by Date desc if dates are parseable
+      for (const key of Object.keys(groups)) {
+        groups[key].sort((a,b) => {
+          const da = new Date(a[iDate]), db = new Date(b[iDate]);
+          return (isNaN(db) - isNaN(da)) || (db - da);
+        });
+      }
+
+      // Render sections
+      let html = "";
+      for (const [sys, list] of Object.entries(groups)) {
+        html += `<h3 style="margin:.6rem 0 .3rem">${sys} Log</h3>`;
+        html += buildTable(list, iDate, iEvent);
+      }
+      document.getElementById("maintenance").innerHTML = html || "<em>No maintenance rows yet.</em>";
+    } catch (e) {
+      console.error(e);
+      document.getElementById("maintenance").textContent = "Failed to load maintenance log.";
+    }
+  }
+
+  renderMaintenance();
+})();
+</script>
+
