@@ -1,45 +1,145 @@
-<style>
-/* keep your bullet styling for <details> sections elsewhere on the page */
-details > ul,
-details > ol,
-details > div > ul,
-details > div > ol {
-  list-style: disc !important;
-  margin-left: 1.5em !important;
-  padding-left: 1em !important;
-}
-details li {
-  display: list-item !important;
-  list-style-type: disc !important;
-}
-</style>
+# SPBBrewhaus 🍻
 
-<!-- Live Beer Tables -->
-<div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
-<div id="upstairs-table" style="margin-top:1rem;">Loading…</div>
-<div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
+Welcome to the **SPBBrewhaus** live beer tracker!  
+This GitHub Pages site automatically displays the current tap list and party lineup by pulling data directly from a shared **Google Sheet**.
 
-<h3 style="margin-top:1.25rem;">Live beers for party</h3>
-<div id="party-table" style="margin-top:0.5rem;"></div>
+---
 
-<script>
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
+## 📋 Features
+- Live updating beer tables from Google Sheets
+- Separate sections for:
+  - Upstairs beers
+  - Downstairs beers
+  - On-deck lineup
+  - Party beers
+- Mobile-friendly display
+- No manual updates — edit the Sheet, and the website updates instantly
 
-  // CSV parser
-  function parseCSV(text) {
-    const out = []; let row = [], field = "", q = false;
-    for (let i=0; i<text.length; i++) {
-      const c = text[i], n = text[i+1];
-      if (q) {
-        if (c === '"' && n === '"') { field += '"'; i++; }
-        else if (c === '"') q = false;
-        else field += c;
-      } else {
-        if (c === '"') q = true;
-        else if (c === ',') { row.push(field); field = ""; }
-        else if (c === '\n' || c === '\r') {
-          if (c === '\r' && n === '\n') i++;
-          row.push(field); field = "";
-          if (row.some(v => (v||"").trim() !== "")) out.push(row);
-          row = [];
-        } else field += c;
+---
+
+## 🧰 Setup Instructions
+
+1. **Publish your Google Sheet to the web**
+   - Open your Sheet
+   - Go to `File → Share → Publish to web`
+   - Choose **Link → CSV format**
+   - Copy the public CSV link (it’ll look like this):
+     ```
+     https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_Bywz5hQ/pub?gid=0&single=true&output=csv
+     ```
+
+2. **Replace the URL in the code below**
+   - Paste your CSV URL into the `CSV_URL` variable inside the `<script>` section.
+
+3. **Commit this file as `index.html`**
+   - Save the HTML below into `index.html` at the root of your repository.
+   - Push changes to GitHub.
+   - Visit your site at:  
+     👉 https://YOURUSERNAME.github.io/
+
+---
+
+## 💻 Full HTML Code
+
+Copy this into your `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPBBrewhaus</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 1rem;
+      background: #fff;
+      color: #222;
+    }
+    h2, h3 {
+      color: #0056d6;
+      margin-bottom: 0.5rem;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: left;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    details > ul,
+    details > ol {
+      list-style: disc !important;
+      margin-left: 1.5em !important;
+    }
+    details li {
+      display: list-item !important;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>SPBBrewhaus</h2>
+
+  <!-- Live Beer Tables -->
+  <div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
+  <div id="upstairs-table" style="margin-top:1rem;">Loading…</div>
+  <div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
+
+  <h3>Live beers for party</h3>
+  <div id="party-table" style="margin-top:1rem;">Loading…</div>
+
+  <script>
+    // ✅ Replace this with your actual published CSV URL
+    const CSV_URL =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_Bywz5hQ/pub?gid=0&single=true&output=csv";
+
+    async function loadCSV(targetId, filterText) {
+      const container = document.getElementById(targetId);
+      try {
+        const res = await fetch(CSV_URL);
+        if (!res.ok) throw new Error("Failed to fetch CSV");
+        const text = await res.text();
+
+        // Split CSV into lines
+        const rows = text.split("\n").map(r => r.split(","));
+        if (filterText) {
+          rows.splice(1, rows.length - 1,
+            ...rows.slice(1).filter(r => r.some(c => c.toLowerCase().includes(filterText.toLowerCase())))
+          );
+        }
+
+        // Build HTML table
+        const table = document.createElement("table");
+        rows.forEach((row, i) => {
+          const tr = document.createElement("tr");
+          row.forEach(cell => {
+            const el = document.createElement(i === 0 ? "th" : "td");
+            el.textContent = cell.trim();
+            tr.appendChild(el);
+          });
+          table.appendChild(tr);
+        });
+
+        container.innerHTML = "";
+        container.appendChild(table);
+      } catch (err) {
+        container.innerHTML = `<em>Error loading table: ${err.message}</em>`;
+      }
+    }
+
+    // ✅ Load each section (customize filter terms if needed)
+    loadCSV("downstairs-table", "Downstairs");
+    loadCSV("upstairs-table", "Upstairs");
+    loadCSV("ondeck-table", "On Deck");
+    loadCSV("party-table", "Party");
+  </script>
+</body>
+</html>
