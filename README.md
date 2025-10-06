@@ -131,7 +131,7 @@ details li {
 
 
 
-🛠 To Brew (Next Batches)
+🛠 To Brew 
 
 - Winter’s Knight
 - Cranberry Saison
