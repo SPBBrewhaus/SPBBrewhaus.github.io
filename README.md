@@ -20,9 +20,8 @@ details li {
 
 <!-- Live Beer Tables -->
 <div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
-<div id="upstairs-table">Loading…</div> style="margin-top:1rem;">Loading…</div>
-<div id="ondeck-table"
-style="margin-top:1rem;">Loading…</div>
+<div id="upstairs-table" style="margin-top:1rem;">Loading…</div>
+<div id="ondeck-table" style="margin-top:1rem;">Loading…</div>
 
 <script>
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
