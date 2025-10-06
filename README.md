@@ -158,15 +158,15 @@ details li {
   <summary>🧻 Labels Needed</summary>
   <div markdown="1">
 
-- **Upcoming Brews**
-  - Winter’s Knight
-  - Super Haze
-- **Inventory**
-  - Boston South Irish Stout
-  - S’mores
-  - New West Coast
-  - Founders Sept
-  - Cherry Pineapple Sour
+  - **Upcoming Brews**
+    - Winter’s Knight
+    - Super Haze
+  - **Inventory**
+    - Boston South Irish Stout
+    - S’mores
+    - New West Coast
+    - Founders Sept
+    - Cherry Pineapple Sour
 
   </div>
 </details>
@@ -179,37 +179,37 @@ details li {
   <summary>📦 Ingredients</summary>
   <div markdown="1">
 
-**Needed**
-- Galaxy — 44 lbs
-- Amarillo — 44 lbs
+  **Needed**
+  - Galaxy — 44 lbs
+  - Amarillo — 44 lbs
 
-<details>
-  <summary>🌿 Hops On Hand</summary>
-  <div markdown="1">
-
-**A–C**
-- Amarillo — (5 lbs)
-- Azacca — (33 lbs)
-- Centennial — (221 lbs)
-- Chinook — (5 lbs)
-- Citra — (80 lbs)
-
-**D–N**
-- El Dorado — (27 lbs)
-- Mandarina — (5 lbs)
-- Nugget — (27 lbs)
-- NY Chinook — (11 lbs)
-
-**S–Z**
-- Saaz — (11 lbs)
-- Simcoe — (33 lbs)
-- Vallestia — (38 lbs)
-- Warrior — (5 lbs)
-- Zeus — (33 lbs)
-- 32 DE 2021 — (11 lbs)
-
+  <details>
+    <summary>🌿 Hops On Hand</summary>
+    <div markdown="1">
+  
+    **A–C**
+    - Amarillo — (5 lbs)
+    - Azacca — (33 lbs)
+    - Centennial — (221 lbs)
+    - Chinook — (5 lbs)
+    - Citra — (80 lbs)
+    
+    **D–N**
+    - El Dorado — (27 lbs)
+    - Mandarina — (5 lbs)
+    - Nugget — (27 lbs)
+    - NY Chinook — (11 lbs)
+    
+    **S–Z**
+    - Saaz — (11 lbs)
+    - Simcoe — (33 lbs)
+    - Vallestia — (38 lbs)
+    - Warrior — (5 lbs)
+    - Zeus — (33 lbs)
+    - 32 DE 2021 — (11 lbs)
+    
   </div>
-</details>
+  </details>
 
   </div>
 </details>
@@ -219,21 +219,21 @@ details li {
   <summary>⚙️ Maintenance & Logs</summary>
   <div markdown="1">
 
-### ❄️ Glycol Chiller Log
-| Date       | Event |
-|------------|-------|
-| 2025-09-01 | Chiller off → glycol very low, topped off with glycol + water, restarted. |
-| 2025-05-27 | New set of fuses received, waiting to install (pump bypassed). |
-
-### 🔥 Kettle Log
-| Date       | Event |
-|------------|-------|
-| 2025-09-22 | Accidentally left boils on → burn tops. Second brew proceeding. Investigating with caustic + acid cycle. |
-
-### 🧊 Big Cooler Log
-| Date       | Event |
-|------------|-------|
-| 2025-10-02 | Temp check — 40°F (normal). |
+  ### ❄️ Glycol Chiller Log
+  | Date       | Event |
+  |------------|-------|
+  | 2025-09-01 | Chiller off → glycol very low, topped off with glycol + water, restarted. |
+  | 2025-05-27 | New set of fuses received, waiting to install (pump bypassed). |
+  
+  ### 🔥 Kettle Log
+  | Date       | Event |
+  |------------|-------|
+  | 2025-09-22 | Accidentally left boils on → burn tops. Second brew proceeding. Investigating with caustic + acid cycle. |
+  
+  ### 🧊 Big Cooler Log
+  | Date       | Event |
+  |------------|-------|
+  | 2025-10-02 | Temp check — 40°F (normal). |
 
   </div>
 </details>
