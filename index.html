@@ -313,8 +313,7 @@ function buildTable(rows) {
 </p>
 <p class="muted">Note: updates appear automatically on this page after saving the sheet.</p>
 
-
-<div id="external-section" style="white-space: pre-wrap; margin-top:2rem;">Loading updates…</div>
+<div id="external-section" style="margin-top:2rem;"></div>
 
 
 <h3>🪖 In the Tanks</h3>
@@ -509,8 +508,9 @@ function buildTable(rows) {
   </div>
 </details>
 
+
 <script>
-  // Simple text -> HTML with lists (no external libs)
+document.addEventListener('DOMContentLoaded', () => {
   function renderSimpleMarkup(text) {
     const lines = text.split(/\r?\n/);
     let html = '';
@@ -519,52 +519,53 @@ function buildTable(rows) {
     const escapeHTML = s =>
       s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-    const closeLists = () => {
-      if (inUl) { html += '</ul>'; inUl = false; }
-      if (inOl) { html += '</ol>'; inOl = false; }
-    };
+    const closeLists = () => { if (inUl) { html += '</ul>'; inUl = false; }
+                               if (inOl) { html += '</ol>'; inOl = false; } };
 
     for (const raw of lines) {
       const line = raw.trim();
+      if (!line) { closeLists(); html += '<p></p>'; continue; }
 
-      if (!line) {               // blank line → close lists / paragraph break
-        closeLists();
-        html += '<p></p>';
-        continue;
-      }
-
-      if (/^[-*•]\s+/.test(line)) {     // unordered item
+      // unordered: "-", "–", "—", "*", "•" with or without a space
+      if (/^[-–—*•]\s*/.test(line)) {
         if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
-        html += '<li>' + escapeHTML(line.replace(/^[-*•]\s+/, '')) + '</li>';
+        html += '<li>' + escapeHTML(line.replace(/^[-–—*•]\s*/, '')) + '</li>';
         continue;
       }
 
-      const m = line.match(/^(\d+)[\.\)]\s+(.*)$/);  // ordered item
+      // ordered: "1.", "1)", with or without a space after
+      const m = line.match(/^(\d+)[\.\)]\s*(.*)$/);
       if (m) {
         if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
         html += '<li>' + escapeHTML(m[2]) + '</li>';
         continue;
       }
 
-      // regular paragraph line
       closeLists();
       html += '<p>' + escapeHTML(line) + '</p>';
     }
-
     closeLists();
     return html;
   }
 
   fetch("updates.txt")
-    .then(r => r.ok ? r.text() : Promise.reject())
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
     .then(t => {
       const el = document.getElementById("external-section");
+      if (!el) throw new Error('#external-section not found');
       el.innerHTML = renderSimpleMarkup(t);
     })
-    .catch(() => {
-      document.getElementById("external-section").textContent = "Couldn't load updates.";
+    .catch(err => {
+      console.error('Updates load error:', err);
+      const el = document.getElementById("external-section");
+      if (el) el.textContent = "Couldn't load updates.";
     });
+});
 </script>
+
 
 <style>
   #external-section ul, #external-section ol { margin: 0.25rem 0 0.75rem 1.25rem; }
