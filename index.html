@@ -507,5 +507,16 @@ function buildTable(rows) {
   </div>
 </details>
 
+<script>
+  fetch("updates.txt")
+    .then(r => r.text())
+    .then(t => {
+      document.getElementById("external-section").textContent = t;
+    })
+    .catch(() => {
+      document.getElementById("external-section").textContent = "Couldn't load updates.";
+    });
+</script>
+
 </body>
 </html>
