@@ -510,15 +510,60 @@ function buildTable(rows) {
 </details>
 
 <script>
-  fetch("data/updates.txt")
-    .then(r => r.text())
+  // Simple text -> HTML with lists (no external libs)
+  function renderSimpleMarkup(text) {
+    const lines = text.split(/\r?\n/);
+    let html = '';
+    let inUl = false, inOl = false;
+
+    const escapeHTML = s =>
+      s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+    const closeLists = () => {
+      if (inUl) { html += '</ul>'; inUl = false; }
+      if (inOl) { html += '</ol>'; inOl = false; }
+    };
+
+    for (const raw of lines) {
+      const line = raw.trim();
+
+      if (!line) {               // blank line → close lists / paragraph break
+        closeLists();
+        html += '<p></p>';
+        continue;
+      }
+
+      if (/^[-*•]\s+/.test(line)) {     // unordered item
+        if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
+        html += '<li>' + escapeHTML(line.replace(/^[-*•]\s+/, '')) + '</li>';
+        continue;
+      }
+
+      const m = line.match(/^(\d+)[\.\)]\s+(.*)$/);  // ordered item
+      if (m) {
+        if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
+        html += '<li>' + escapeHTML(m[2]) + '</li>';
+        continue;
+      }
+
+      // regular paragraph line
+      closeLists();
+      html += '<p>' + escapeHTML(line) + '</p>';
+    }
+
+    closeLists();
+    return html;
+  }
+
+  fetch("updates.txt")
+    .then(r => r.ok ? r.text() : Promise.reject())
     .then(t => {
-      document.getElementById("external-section").textContent = t;
+      const el = document.getElementById("external-section");
+      el.innerHTML = renderSimpleMarkup(t);
     })
     .catch(() => {
       document.getElementById("external-section").textContent = "Couldn't load updates.";
     });
 </script>
-
 </body>
 </html>
