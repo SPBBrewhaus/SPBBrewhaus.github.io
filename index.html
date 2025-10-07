@@ -508,7 +508,7 @@ function buildTable(rows) {
 </details>
 
 <script>
-  fetch("updates.txt")
+  fetch("data/updates.txt")
     .then(r => r.text())
     .then(t => {
       document.getElementById("external-section").textContent = t;
