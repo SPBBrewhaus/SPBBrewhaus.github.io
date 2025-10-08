@@ -513,7 +513,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const target = document.getElementById('external-section');
   if (!target) return;
 
-  const TXT_URL = `${location.origin}/updates.txt?cb=${Date.now()}`;
+  // Your file lives in /data
+  const TXT_URL = `${location.origin}/data/updates.txt?cb=${Date.now()}`;
 
   function escapeHTML(s){
     return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -522,25 +523,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderSimpleMarkup(text){
     const lines = text.split(/\r?\n/);
     let html = '', inUl = false, inOl = false;
-
-    const closeLists = () => {
-      if (inUl) { html += '</ul>'; inUl = false; }
-      if (inOl) { html += '</ol>'; inOl = false; }
-    };
+    const closeLists = () => { if (inUl) { html += '</ul>'; inUl = false; } if (inOl) { html += '</ol>'; inOl = false; } };
 
     for (const raw of lines) {
       const line = raw.trim();
-
       if (!line) { closeLists(); html += '<p></p>'; continue; }
 
-      // Unordered bullets: -, –, —, *, • (with OR without a space after)
+      // Unordered bullets: -, –, —, *, • (with OR without a space)
       if (/^[-–—*•]\s*/.test(line)) {
         if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
         html += `<li>${escapeHTML(line.replace(/^[-–—*•]\s*/, ''))}</li>`;
         continue;
       }
 
-      // Ordered bullets: "1.", "1)" (with OR without a space after)
+      // Ordered bullets: "1." or "1)" (with OR without a space)
       const m = line.match(/^(\d+)[\.\)]\s*(.*)$/);
       if (m) {
         if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
@@ -556,19 +552,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   fetch(TXT_URL, { cache: 'no-store' })
-    .then(r => {
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return r.text();
-    })
-    .then(text => {
-      target.innerHTML = renderSimpleMarkup(text);
-    })
+    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); })
+    .then(text => { target.innerHTML = renderSimpleMarkup(text); })
     .catch(err => {
       console.error('updates.txt load failed:', err);
       target.textContent = "Couldn't load updates.";
     });
 });
-</script>
+</script> 
 
 
 
