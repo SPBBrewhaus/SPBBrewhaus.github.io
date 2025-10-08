@@ -508,63 +508,68 @@ function buildTable(rows) {
   </div>
 </details>
 
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  function renderSimpleMarkup(text) {
+  const target = document.getElementById('external-section');
+  if (!target) return;
+
+  const TXT_URL = `${location.origin}/updates.txt?cb=${Date.now()}`;
+
+  function escapeHTML(s){
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function renderSimpleMarkup(text){
     const lines = text.split(/\r?\n/);
-    let html = '';
-    let inUl = false, inOl = false;
+    let html = '', inUl = false, inOl = false;
 
-    const escapeHTML = s =>
-      s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-    const closeLists = () => { if (inUl) { html += '</ul>'; inUl = false; }
-                               if (inOl) { html += '</ol>'; inOl = false; } };
+    const closeLists = () => {
+      if (inUl) { html += '</ul>'; inUl = false; }
+      if (inOl) { html += '</ol>'; inOl = false; }
+    };
 
     for (const raw of lines) {
       const line = raw.trim();
+
       if (!line) { closeLists(); html += '<p></p>'; continue; }
 
-      // unordered: "-", "–", "—", "*", "•" with or without a space
+      // Unordered bullets: -, –, —, *, • (with OR without a space after)
       if (/^[-–—*•]\s*/.test(line)) {
         if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
-        html += '<li>' + escapeHTML(line.replace(/^[-–—*•]\s*/, '')) + '</li>';
+        html += `<li>${escapeHTML(line.replace(/^[-–—*•]\s*/, ''))}</li>`;
         continue;
       }
 
-      // ordered: "1.", "1)", with or without a space after
+      // Ordered bullets: "1.", "1)" (with OR without a space after)
       const m = line.match(/^(\d+)[\.\)]\s*(.*)$/);
       if (m) {
         if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
-        html += '<li>' + escapeHTML(m[2]) + '</li>';
+        html += `<li>${escapeHTML(m[2])}</li>`;
         continue;
       }
 
       closeLists();
-      html += '<p>' + escapeHTML(line) + '</p>';
+      html += `<p>${escapeHTML(line)}</p>`;
     }
     closeLists();
     return html;
   }
 
-  fetch("data\updates.txt")
+  fetch(TXT_URL, { cache: 'no-store' })
     .then(r => {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
       return r.text();
     })
-    .then(t => {
-      const el = document.getElementById("external-section");
-      if (!el) throw new Error('#external-section not found');
-      el.innerHTML = renderSimpleMarkup(t);
+    .then(text => {
+      target.innerHTML = renderSimpleMarkup(text);
     })
     .catch(err => {
-      console.error('Updates load error:', err);
-      const el = document.getElementById("external-section");
-      if (el) el.textContent = "Couldn't load updates.";
+      console.error('updates.txt load failed:', err);
+      target.textContent = "Couldn't load updates.";
     });
 });
 </script>
+
 
 
 <style>
