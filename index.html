@@ -267,7 +267,7 @@ function parseDateLoose(s) {
   if (!isNaN(d)) return d;
   const m = String(s).trim().match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);
   if (m) {
-    let [_, mm, dd, yyyy, hh='0', mi='0', ss='0'] = m;
+    let [_, mm, dd, yyyy] = m;
     if (yyyy.length === 2) yyyy = (Number(yyyy) < 70 ? '20' : '19') + yyyy;
     d = new Date(Number(yyyy), Number(mm)-1, Number(dd));
     if (!isNaN(d)) return d;
