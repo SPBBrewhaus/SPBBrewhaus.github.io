@@ -9,6 +9,7 @@
 <body>
 
 <h2>S.P.B. Brewhaus</h2>
+<div id="last-updated" class="muted" style="margin:.25rem 0 .75rem" aria-live="polite"></div>
 
 
 <h4>Values in table represent backups</h4>
@@ -305,6 +306,49 @@ function buildTable(rows) {
   }
 
   render();
+
+  // --- Last Updated stamp (detect common header names and take the newest date) ---
+function parseDateLoose(s) {
+  if (!s) return NaN;
+  // Try native first
+  let d = new Date(s);
+  if (!isNaN(d)) return d;
+  // Try MM/DD/YYYY or YYYY-MM-DD manually
+  const m1 = String(s).trim().match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);
+  if (m1) {
+    let [_, mm, dd, yyyy, hh='0', mi='0', ss='0'] = m1;
+    if (yyyy.length === 2) yyyy = (Number(yyyy) < 70 ? '20' : '19') + yyyy;
+    d = new Date(Number(yyyy), Number(mm)-1, Number(dd), Number(hh), Number(mi), Number(ss));
+    if (!isNaN(d)) return d;
+  }
+  return NaN;
+}
+
+(function setLastUpdatedStamp(){
+  const headerNames = ["date updated","updated","last updated","last_update","lastupdated"];
+  const dateColIdx = headerNames
+    .map(n => header.indexOf(n))
+    .find(i => i >= 0);
+
+  let lastUpdatedDate = null;
+
+  if (dateColIdx >= 0) {
+    // Scan all rows, pick the latest valid date
+    for (const r of rows.slice(1)) {
+      const d = parseDateLoose(r[dateColIdx]);
+      if (d instanceof Date && !isNaN(d)) {
+        if (!lastUpdatedDate || d > lastUpdatedDate) lastUpdatedDate = d;
+      }
+    }
+  }
+
+  const stampEl = document.getElementById("last-updated");
+  if (stampEl) {
+    stampEl.textContent = lastUpdatedDate
+      ? `Updated ${lastUpdatedDate.toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`
+      : ""; // If not found, keep it empty (or set a default message)
+  }
+})();
 });
 </script>
 
