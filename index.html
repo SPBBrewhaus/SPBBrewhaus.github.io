@@ -269,7 +269,7 @@ function parseDateLoose(s) {
   if (m) {
     let [_, mm, dd, yyyy, hh='0', mi='0', ss='0'] = m;
     if (yyyy.length === 2) yyyy = (Number(yyyy) < 70 ? '20' : '19') + yyyy;
-    d = new Date(Number(yyyy), Number(mm)-1, Number(dd), Number(hh), Number(mi), Number(ss));
+    d = new Date(Number(yyyy), Number(mm)-1, Number(dd));
     if (!isNaN(d)) return d;
   }
   return NaN;
