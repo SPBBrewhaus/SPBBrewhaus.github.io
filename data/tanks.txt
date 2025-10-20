@@ -1,0 +1,8 @@
+Tank 1 → Bunker 7 bbl
+Tank 3 → NY Lager 3.5 bbl
+Tank 4 → S'mores 3.5 bbl (Done)
+Tank 5 → NY IPA 3.5 bbl
+Tank 6 → Seltzer 14 bbl
+Tank 7 → Gringo 14 bbl
+Tank 8 → Super Haze 7 bbl
+Available tanks: 2
