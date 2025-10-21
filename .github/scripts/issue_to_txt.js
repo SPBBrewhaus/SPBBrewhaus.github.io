@@ -1,59 +1,81 @@
+// .github/scripts/issue_to_txt.js
 import fs from 'node:fs';
 
-const issue = fs.readFileSync('.github/issue.md', 'utf8');
+const issuePath = '.github/issue.md';
+if (!fs.existsSync(issuePath)) {
+  console.error('Missing .github/issue.md');
+  process.exit(1);
+}
+const issue = fs.readFileSync(issuePath, 'utf8');
 
-// Helpers
-const section = (label) => {
-  const re = new RegExp(`### ${label}[\\s\\S]*?\\n\\n([\\s\\S]*?)(\\n###|$)`, 'i');
-  const m = issue.match(re);
+// Normalize line endings
+const body = issue.replace(/\r\n/g, '\n');
+
+// Flexible section grabber: matches ### or ####, any spacing, case-insensitive
+function grab(label) {
+  const re = new RegExp(
+    String.raw`^#{3,4}\s*${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\s*\n+([\s\S]*?)(?=^#{3,4}\s|\Z)`,
+    'gmi'
+  );
+  const m = re.exec(body);
   return m ? m[1].trim() : '';
-};
+}
 
-const sanitizeLines = (txt) =>
-  txt.split('\n').map(s => s.trim()).filter(Boolean);
+const dateStr     = (grab('Date').split('\n')[0] || '').trim();
+const downstairs  = grab('Downstairs items');
+const upstairs    = grab('Upstairs items');
+const ondeck      = grab('On Deck');
+const hops        = grab('Hops');
+const maintenance = grab('Maintenance log');
+const notes       = grab('General notes');
 
-// Extract sections (GitHub converts the YAML form to markdown with headings)
-const dateStr     = (issue.match(/### Date\\s+\\n\\n(.+?)\\n/) || [,'']).at(1).trim();
-const downstairs  = sanitizeLines(section('Downstairs items'));
-const upstairs    = sanitizeLines(section('Upstairs items'));
-const ondeck      = sanitizeLines(section('On Deck'));
-const hops        = sanitizeLines(section('Hops'));
-const maintenance = sanitizeLines(section('Maintenance log'));
-const notes       = section('General notes');
+// Turn textareas into clean arrays (one item per line)
+const toLines = (txt) => txt
+  .split('\n')
+  .map(s => s.trim())
+  .filter(Boolean);
 
 // Ensure /data exists
 fs.mkdirSync('data', { recursive: true });
 
-// Writer helpers for TXT formats you prefer
+// Writers
 const writeList = (path, lines) => {
-  // one item per line; preserve your simple pipes format
-  const body = lines.join('\n') + (lines.length ? '\n' : '');
+  const arr = Array.isArray(lines) ? lines : toLines(lines);
+  const body = arr.join('\n') + (arr.length ? '\n' : '');
   fs.writeFileSync(path, body, 'utf8');
 };
 
 const writeStamped = (path, lines) => {
-  // append with date header
+  const arr = Array.isArray(lines) ? lines : toLines(lines);
+  if (arr.length === 0) return;
   const existing = fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : '';
-  const block = lines.length ? `\n[${dateStr || new Date().toISOString().slice(0,10)}]\n` + lines.join('\n') + '\n' : '';
+  const stamp = dateStr || new Date().toISOString().slice(0,10);
+  const block = `\n[${stamp}]\n${arr.join('\n')}\n`;
   fs.writeFileSync(path, existing + block, 'utf8');
 };
 
-// Alphabetize hops
-const sortedHops = [...hops].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:'base'}));
+// Sort hops A→Z, case-insensitive
+const sortedHops = toLines(hops).sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:'base'}));
 
-// Write files you’re already loading on the site
-writeList('data/downstairs.txt', downstairs);
-writeList('data/upstairs.txt',   upstairs);
-writeList('data/ondeck.txt',     ondeck);
+// Write your site data
+writeList('data/downstairs.txt', toLines(downstairs));
+writeList('data/upstairs.txt',   toLines(upstairs));
+writeList('data/ondeck.txt',     toLines(ondeck));
 writeList('data/hops.txt',       sortedHops);
+writeStamped('data/maintenance.txt', toLines(maintenance));
+writeList('data/notes.txt', toLines(notes));
 
-// Maintenance: keep as a dated append log
-writeStamped('data/maintenance.txt', maintenance);
+// A simple "last updated" stamp for your UI
+fs.writeFileSync('data/last_updated.txt', new Date().toISOString(), 'utf8');
 
-// Notes: keep latest snapshot (or switch to append if you prefer)
-writeList('data/notes.txt', notes ? notes.split('\n') : []);
-
-// Optional: a last-updated stamp
-fs.writeFileSync('data/last_updated.txt', (new Date()).toISOString(), 'utf8');
-
-console.log('Data files updated.');
+// Log a preview (shows up in Actions logs)
+const preview = {
+  date: dateStr,
+  downstairs_count: toLines(downstairs).length,
+  upstairs_count: toLines(upstairs).length,
+  ondeck_count: toLines(ondeck).length,
+  hops_sorted_count: sortedHops.length,
+  maintenance_new_lines: toLines(maintenance).length,
+  notes_chars: notes.length
+};
+console.log('Parsed preview:', JSON.stringify(preview, null, 2));
