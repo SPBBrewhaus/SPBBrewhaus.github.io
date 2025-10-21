@@ -1,0 +1,61 @@
+name: Brewhaus Update
+description: Answer questions; bot will update /data/*.txt
+labels: ["brew-update"]
+body:
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      placeholder: YYYY-MM-DD
+    validations: { required: true }
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which areas are you updating?
+      multiple: true
+      options:
+        - "Downstairs Inventory"
+        - "Upstairs Inventory"
+        - "On Deck"
+        - "Hops"
+        - "Maintenance Log"
+        - "Notes"
+    validations: { required: true }
+
+  - type: textarea
+    id: downstairs
+    attributes:
+      label: Downstairs items (one per line)
+      description: "Format: Beer Name | 1/2 bbl: N | 1/6 bbl: N | Notes: …"
+      placeholder: |
+        Restitution | 1/2 bbl: 1 | 1/6 bbl: 0 | Notes: ready
+        Slap Juice | 1/2 bbl: 0 | 1/6 bbl: 2 | Notes: low
+  - type: textarea
+    id: upstairs
+    attributes:
+      label: Upstairs items (one per line)
+  - type: textarea
+    id: ondeck
+    attributes:
+      label: On Deck (one per line)
+  - type: textarea
+    id: hops
+    attributes:
+      label: Hops (one per line; any order—will sort A→Z)
+      placeholder: |
+        Citra
+        Mosaic
+        Saaz
+        Amarillo
+  - type: textarea
+    id: maintenance
+    attributes:
+      label: Maintenance log (one entry per line)
+      description: "Format: [Equipment] | Issue | Action | By | Time (YYYY-MM-DD HH:MM)"
+      placeholder: |
+        [Glycol Chiller] | high temp | cleaned condenser | Steve | 2025-10-20 14:12
+  - type: textarea
+    id: notes
+    attributes:
+      label: General notes
