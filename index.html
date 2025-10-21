@@ -4,610 +4,346 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SPB Brewhaus</title>
-
+<style>
+  :root{ --title:1.4rem; --section:1.2rem; --content:1.06rem; }
+  html{ font-size:16px; }
+  body{ font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:20px; line-height:1.45; color:#111; }
+  h2,h3{ color:#0b57d0; margin:.25rem 0 .5rem; }
+  h2{ font-size:var(--title); }
+  h3{ font-size:var(--section); }
+  .muted{ color:#666; font-style:italic; }
+  .section{ margin:1rem 0; font-size:var(--content); }
+  details{ margin:.75rem 0; }
+  details summary{ cursor:pointer; }
+  ul,ol{ margin:.25rem 0 .75rem 1.25rem; }
+  .table-wrap{ max-width:880px; margin:.25rem auto 1rem; padding:0 .25rem; }
+  table{ width:100%; border-collapse:collapse; font-size:var(--content); }
+  th,td{ border:1px solid #ddd; padding:6px 8px; text-align:left; vertical-align:top; }
+  th{ background:#f5f3ee; font-weight:600; }
+  @media (max-width:420px){ :root{ --title:1.35rem; --section:1.16rem; --content:1.02rem; } }
+</style>
 </head>
 <body>
 
 <h2>S.P.B. Brewhaus</h2>
 <div id="last-updated" class="muted" style="margin:.25rem 0 .75rem" aria-live="polite"></div>
+<p class="muted">Values in table represent backups</p>
 
+<!-- Inventory Tables -->
+<div id="upstairs-table"   class="section">Loading…</div>
+<div id="downstairs-table" class="section">Loading…</div>
+<div id="ondeck-table"     class="section">Loading…</div>
 
-<h4>Values in table represent backups</h4>
+<!-- Content (lists) from individual .txt files -->
+<div id="content-sections" class="section"></div>
 
-<!-- Live Beer Tables -->
-<div id="downstairs-table" style="margin-top:1rem;">Loading…</div>
-<div id="upstairs-table"   style="margin-top:1rem;">Loading…</div>
-<div id="ondeck-table"     style="margin-top:1rem;">Loading…</div>
+<!-- Maintenance -->
+<details class="section" open>
+  <summary>⚙️ Maintenance & Logs</summary>
+  <div id="maintenance" style="margin-top:.5rem;">Loading…</div>
+  <p style="margin:.5rem 0 0;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMIzh7LHuZMFyK7xNuJIg30oSsXO_VFRJEswS-piHc_RX37A/viewform" target="_blank">🔐 Staff link to submit maintenance form</a>
+  </p>
+  <p class="muted" style="margin:.25rem 0 0;">Note: updates appear automatically on this page after saving the sheet.</p>
+</details>
 
-
-<style>
-/* Base */
-html { font-size: 16px; }
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  margin: 20px;
-  line-height: 1.45;
-  color: #111;
-}
-
-/* Scale knobs */
-:root{
-  --title: 1.4rem;     /* page title (SPBBrewhaus) */
-  --section: 1.2rem;   /* section headers (h3 like “Upstairs — On Tap”) */
-  --content: 1.12rem;  /* tables & lists */
-}
-
-/* Headings */
-h2 { color:#0b57d0; font-size: var(--title); margin:.25rem 0 .75rem; }
-h3 { color:#0b57d0; font-size: var(--section); margin:.75rem 0 .35rem; }
-
-/* Inventory blocks: make content match section scale */
-#downstairs-table, #upstairs-table, #ondeck-table, #party-table {
-  font-size: var(--content);   /* everything inside uses this size */
-}
-
-/* Make ALL children inherit exactly (th, td, strong, list items, etc.) */
-#downstairs-table *, #upstairs-table *, #ondeck-table *, #party-table * {
-  font-size: inherit !important;
-}
-
-/* Tables */
-table { width:100%; border-collapse:collapse; margin-top:.6rem; }
-th, td { border:1px solid #ddd; padding:3px 4px; text-align:left; vertical-align:top; }
-th { background:#f5f3ee; font-weight:600; }
-
-/* Lists inside <details> */
-details > ul,
-details > ol,
-details > div > ul,
-details > div > ol { list-style:disc !important; margin-left:1.5em !important; padding-left:1em !important; }
-details li { display:list-item !important; list-style-type:disc !important; }
-
-/* Muted text */
-.muted { color:#666; font-style:italic; }
-
-/* Optional: responsive gentle scaling */
-@media (max-width: 420px){
-  :root { --title: 1.35rem; --section: 1.18rem; --content: 1.1rem; }
-}
-</style>
-
-<style>
-/* Force table font size to match body text */
-#downstairs-table table,
-#upstairs-table table,
-#ondeck-table table,
-#party-table table {
-  font-size: 1.1rem !important;   /* bump this up or down as needed */
-}
-
-/* Ensure header and cell text follow the same scale */
-#downstairs-table th, #downstairs-table td,
-#upstairs-table th, #upstairs-table td,
-#ondeck-table th, #ondeck-table td,
-#party-table th, #party-table td {
-  font-size: inherit !important;
-  line-height: 1.4;
-}
-
-/* Constrain table line length so text doesn't feel tiny on wide screens */
-.table-wrap {
-  max-width: 880px;          /* adjust to taste: 720–960px is comfy */
-  margin: .25rem auto 1rem;  /* center it */
-  padding: 0 .25rem;         /* a little breathing room on mobile */
-}
-
-/* --- Cross-browser table wrapping fix --- */
-.table-wrap table {
-  table-layout: auto;                /* allow natural column sizing */
-}
-
-.table-wrap th:nth-child(2),
-.table-wrap td:nth-child(2) {
-  white-space: normal;               /* allow normal wrapping */
-  word-break: normal;                /* don't break inside words */
-  overflow-wrap: break-word;         /* wrap long strings if needed */
-  hyphens: auto;
-  min-width: 16ch;                   /* give the Beer + Status column some room */
-}
-
-/* keep the small numeric columns narrow */
-.table-wrap th:nth-child(1), .table-wrap td:nth-child(1) { width: 4.5rem; }
-.table-wrap th:nth-child(3), .table-wrap td:nth-child(3),
-.table-wrap th:nth-child(4), .table-wrap td:nth-child(4),
-.table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { width: 5.5rem; }
-/* Column sizing: give Beer column room; keep counts narrower */
-.table-wrap th:nth-child(1), .table-wrap td:nth-child(1) { width: 64px; }
-.table-wrap th:nth-child(3), .table-wrap td:nth-child(3),
-.table-wrap th:nth-child(4), .table-wrap td:nth-child(4),
-.table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { width: 96px; }
-
-/* Wrap long names/status nicely */
-.table-wrap td:nth-child(2) {
-  word-break: break-word;
-  hyphens: auto;
-}
-
-/* Ensure cells inherit sizing and have reasonable leading */
-.table-wrap th, .table-wrap td {
-  font-size: inherit !important;
-  line-height: 1.4;
-}
-
-/* Make the maintenance tables the same readable size as inventory tables */
-#maintenance {
-  font-size: 1.1rem;       /* or use var(--content) if you prefer */
-  line-height: 1.4;
-}
-
-#maintenance table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: inherit !important;  /* inherit from #maintenance */
-  margin-top: .6rem;
-}
-
-#maintenance th,
-#maintenance td {
-  font-size: inherit !important;
-  line-height: 1.4;
-  border: 1px solid #ddd;
-  padding: 6px 8px;
-}
-
-#maintenance th {
-  background: #f5f3ee;
-  font-weight: 600;
-}
-
-</style>
+<p class="section">
+  <a href="https://docs.google.com/spreadsheets/d/13-oglKrmnpkJok_xEO7brLNmnetRz3XIkrc2gSXf4X0/edit?usp=sharing" target="_blank">🔐 Staff Login to Update Inventory</a>
+</p>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  // 🔁 Replace with your PUBLISHED-TO-WEB CSV URL for the main “Inventory” sheet
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
+/* ----------------- Helpers ----------------- */
+const normalize = s => (s||"").toLowerCase().replace(/\s+/g," ").trim();
 
-  function parseCSV(text) {
-    const out = []; let row = [], field = "", q = false;
-    for (let i = 0; i < text.length; i++) {
-      const c = text[i], n = text[i + 1];
-      if (q) {
-        if (c === '"' && n === '"') { field += '"'; i++; }
-        else if (c === '"') q = false;
-        else field += c;
-      } else {
-        if (c === '"') q = true;
-        else if (c === ',') { row.push(field); field = ""; }
-        else if (c === '\n' || c === '\r') {
-          if (c === '\r' && n === '\n') i++;
-          row.push(field); field = "";
-          if (row.some(v => (v || "").trim() !== "")) out.push(row);
-          row = [];
-        } else field += c;
-      }
+function parseCSV(text){
+  const out=[]; let row=[], field="", q=false;
+  for (let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if(q){ if(c==='"'&&n==='"'){field+='"';i++;} else if(c==='"'){q=false;} else field+=c; }
+    else{
+      if(c==='"') q=true;
+      else if(c===','){ row.push(field); field=""; }
+      else if(c==='\n'||c==='\r'){ if(c==='\r'&&n==='\n') i++; row.push(field); field=""; if(row.some(v=>(v||"").trim()!=="")) out.push(row); row=[]; }
+      else field+=c;
     }
-    if (field.length || row.length) { row.push(field); out.push(row); }
-    return out;
   }
+  if(field.length||row.length){ row.push(field); out.push(row); }
+  return out;
+}
 
-  function getStockIcon(status) {
-    if (!status) return "";
+async function fetchLines(url){
+  const r = await fetch(url + '?cb=' + Date.now(), { cache:'no-store' });
+  if(!r.ok) throw new Error(url + ' HTTP ' + r.status);
+  const text = await r.text();
+  return text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+}
+
+function listHTML(lines){ return lines.length ? `<ul>${lines.map(li=>`<li>${li}</li>`).join("")}</ul>` : `<div class="muted">No items.</div>`; }
+
+/* ----------------- Inventory (CSV) + Last Updated ----------------- */
+async function renderInventory(){
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?output=csv";
+  const upEl   = document.getElementById("upstairs-table");
+  const downEl = document.getElementById("downstairs-table");
+  const deckEl = document.getElementById("ondeck-table");
+
+  function getStockIcon(status){
+    if(!status) return "";
     const s = status.toLowerCase();
     if (s.includes("good")) return " ✅";
     if (s.includes("low"))  return " 🟡";
     if (s.includes("out"))  return " ❌";
     return "";
   }
-function buildTable(rows) {
-  let html = `<div class="table-wrap"><table><thead><tr>
-    <th>Tap</th>
-    <th>Beer + Status</th>
-    <th>1/2 bbl</th>
-    <th>1/6 bbl</th>
-    <th>Cases of Cans</th>
-  </tr></thead><tbody>`;
 
-  for (const r of rows) {
-    const icon  = getStockIcon(r.stock);
-    const notes = r.notes ? `<div class="muted">${r.notes}</div>` : "";
-    html += `<tr>
-      <td>${r.tap || ""}</td>
-      <td><strong>${r.beer || ""}${icon}</strong>${r.status ? " — " + r.status : ""}${notes}</td>
-      <td>${r.half || ""}</td>
-      <td>${r.sixth || ""}</td>
-      <td>${r.cans || ""}</td>
-    </tr>`;
-  }
-  html += `</tbody></table></div>`;
-  return html;
-}
-  function buildTable2(rows) {
-    let html = `<table><thead><tr>
-      <th>Tap</th>
-      <th>Beer + Status</th>
-      <th>1/2 bbl</th>
-      <th>1/6 bbl</th>
-      <th>Cases of Cans</th>
+  function buildTable(rows){
+    let html = `<div class="table-wrap"><table><thead><tr>
+      <th>Tap</th><th>Beer + Status</th><th>1/2 bbl</th><th>1/6 bbl</th><th>Cases of Cans</th>
     </tr></thead><tbody>`;
-
-    for (const r of rows) {
+    for(const r of rows){
       const icon  = getStockIcon(r.stock);
       const notes = r.notes ? `<div class="muted">${r.notes}</div>` : "";
       html += `<tr>
-        <td>${r.tap || ""}</td>
-        <td><strong>${r.beer || ""}${icon}</strong>${r.status ? " — " + r.status : ""}${notes}</td>
-        <td>${r.half || ""}</td>
-        <td>${r.sixth || ""}</td>
-        <td>${r.cans || ""}</td>
+        <td>${r.tap||""}</td>
+        <td><strong>${r.beer||""}${icon}</strong>${r.status? " — "+r.status:""}${notes}</td>
+        <td>${r.half||""}</td><td>${r.sixth||""}</td><td>${r.cans||""}</td>
       </tr>`;
     }
-    html += `</tbody></table>`;
+    html += `</tbody></table></div>`;
     return html;
   }
 
-  function normalize(str) { return (str || "").toLowerCase().replace(/\s+/g, " ").trim(); }
+  try{
+    const res  = await fetch(CSV_URL, { cache:"no-cache", mode:"cors" });
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = parseCSV(await res.text());
+    if(!rows.length) throw new Error("Empty CSV");
 
-  async function render() {
-    const upEl   = document.getElementById("upstairs-table");
-    const downEl = document.getElementById("downstairs-table");
-    const deckEl = document.getElementById("ondeck-table");
+    const header = rows[0].map(h => normalize(h));
+    const gi = name => header.indexOf(name);
+    const idx = {
+      location: gi("location"),
+      tap: gi("tap"),
+      beer: gi("beer"),
+      status: gi("status"),
+      half: gi("1/2 bbl"),
+      sixth: gi("1/6 bbl"),
+      cans: gi("cases of cans"),
+      stock: gi("stock status"),
+      notes: gi("notes"),
+      dateUpdated: (["date updated","updated","last updated","last_update","lastupdated"]
+                    .map(n=>header.indexOf(n)).find(i=>i>=0))
+    };
 
-    try {
-      const res  = await fetch(CSV_URL, { cache: "no-cache", mode: "cors" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const rows = parseCSV(await res.text());
-      if (!rows.length) throw new Error("Empty CSV");
+    const data = rows.slice(1).map(r => ({
+      location:r[idx.location]||"", tap:r[idx.tap]||"", beer:r[idx.beer]||"",
+      status:r[idx.status]||"", half:r[idx.half]||"", sixth:r[idx.sixth]||"",
+      cans:r[idx.cans]||"", stock:r[idx.stock]||"", notes:r[idx.notes]||"",
+      du: idx.dateUpdated!=null ? (r[idx.dateUpdated]||"") : ""
+    }));
 
-      const header = rows[0].map(h => normalize(h));
+    // Last Updated = newest valid date in the dateUpdated column
+    (function(){
+      function parseDateLoose(s){
+        if(!s) return NaN;
+        let d=new Date(s); if(!isNaN(d)) return d;
+        const m=String(s).trim().match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+        if(m){ let [_,mm,dd,yyyy]=m; if(yyyy.length===2) yyyy=(+yyyy<70?'20':'19')+yyyy;
+          d=new Date(+yyyy, +mm-1, +dd); if(!isNaN(d)) return d; }
+        return NaN;
+      }
+      const latest = data.reduce((acc, row)=>{
+        const d=parseDateLoose(row.du);
+        return (d instanceof Date && !isNaN(d) && (!acc || d>acc)) ? d : acc;
+      }, null);
+      const el = document.getElementById("last-updated");
+      if(el) el.textContent = latest ? `Updated ${latest.toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})}` : "";
+    })();
 
-      // --- Last Updated stamp (take newest date from a Date Updated column) ---
-function parseDateLoose(s) {
-  if (!s) return NaN;
-  let d = new Date(s);
-  if (!isNaN(d)) return d;
-  const m = String(s).trim().match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);
-  if (m) {
-    let [_, mm, dd, yyyy] = m;
-    if (yyyy.length === 2) yyyy = (Number(yyyy) < 70 ? '20' : '19') + yyyy;
-    d = new Date(Number(yyyy), Number(mm)-1, Number(dd));
-    if (!isNaN(d)) return d;
+    const isUp   = s => /up|upstairs/i.test(s);
+    const isDown = s => /down|downstairs/i.test(s);
+    const isDeck = s => /deck/i.test(s);
+
+    const upstairs   = data.filter(x => isUp(x.location));
+    const downstairs = data.filter(x => isDown(x.location));
+    const ondeck     = data.filter(x => isDeck(x.location));
+
+    upEl.innerHTML   = `<h3>Upstairs — On Tap</h3>`   + (upstairs.length   ? buildTable(upstairs)   : `<div class="muted">No rows found.</div>`);
+    downEl.innerHTML = `<h3>Downstairs — On Tap</h3>` + (downstairs.length ? buildTable(downstairs) : `<div class="muted">No rows found.</div>`);
+    deckEl.innerHTML = `<h3>On Deck</h3>`             + (ondeck.length     ? buildTable(ondeck)     : `<div class="muted">No rows found.</div>`);
+  }catch(e){
+    console.error(e);
+    upEl.textContent   = "Failed to load inventory.";
+    downEl.textContent = "Failed to load inventory.";
+    deckEl.textContent = "Failed to load inventory.";
   }
-  return NaN;
 }
 
-(function setLastUpdatedStamp(rows, header){
-  const headerNames = ["date updated","updated","last updated","last_update","lastupdated"];
-  const dateColIdx = headerNames.map(n => header.indexOf(n)).find(i => i >= 0);
+/* ----------------- Lists from .txt files ----------------- */
+async function renderTxtLists(){
+  const mount = document.getElementById('content-sections');
+  if(!mount) return;
 
-  let latest = null;
-  if (dateColIdx >= 0) {
-    for (const r of rows.slice(1)) {
-      const d = parseDateLoose(r[dateColIdx]);
-      if (d instanceof Date && !isNaN(d) && (!latest || d > latest)) latest = d;
+  // Simple sections: one .txt per section (one item per line)
+  const simpleSections = [
+    { title:"🪖 In the Tanks", file:"/data/tanks.txt" },
+    { title:"🛠 To Brew",      file:"/data/tobrew.txt" },
+    { title:"⚗️ Chemicals",    file:"/data/chemicals.txt" },
+    { title:"Gas levels",      file:"/data/gas.txt" }
+  ];
+
+  // Details sections: either a single .txt or grouped .txts
+  const detailBlocks = [
+    { summary:"🔮 Future Maintenance", open:false, file:"/data/future_maintenance.txt" },
+    { summary:"📄 Orders",             open:false, file:"/data/orders.txt" },
+    { summary:"🧻 Labels Needed",      open:false, groups:[
+        { heading:"Upcoming Brews", file:"/data/labels_upcoming.txt" },
+        { heading:"Inventory",      file:"/data/labels_inventory.txt" }
+      ]
+    },
+    { summary:"📦 Ingredients", open:false, groups:[
+        { heading:"Needed", file:"/data/ingredients_needed.txt" }
+      ],
+      // Special nested section built from a single text file with automated sorting
+      hopsFile:"/data/hops_on_hand.txt", hopsSummary:"🌿 Hops On Hand"
     }
+  ];
+
+  function sectionHTML(title, lines){ return `<div class="section"><h3>${title}</h3>${listHTML(lines)}</div>`; }
+
+  function groupsHTML(groups){
+    return groups.map(g => `<p><strong>${g.heading}</strong></p>${listHTML(g.items||[])}`).join("");
   }
 
-  const el = document.getElementById("last-updated");
-  if (el) {
-    el.textContent = latest
-      ? `Updated ${latest.toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`
-      : ""; // leave blank if column not found
+  function detailsHTML({summary, open, lines, groups, subcontentHTML}){
+    let inner = "";
+    if (lines)  inner += listHTML(lines);
+    if (groups) inner += groupsHTML(groups);
+    if (subcontentHTML) inner += subcontentHTML;
+    return `<details class="section"${open?' open':''}><summary>${summary}</summary><div>${inner}</div></details>`;
   }
-})(rows, header);
 
-      const gi = (name) => header.indexOf(name);
-
-      const idx = {
-        location: gi("location"),
-        tap: gi("tap"),
-        beer: gi("beer"),
-        status: gi("status"),
-        half: gi("1/2 bbl"),
-        sixth: gi("1/6 bbl"),
-        cans: gi("cases of cans"),
-        stock: gi("stock status"),
-        notes: gi("notes"),
+  // Hops auto-sorter: read lines, sort A→Z by hop name, bucket into A–C / D–N / S–Z
+  async function buildHopsHTML(hopsFile, summaryText){
+    try{
+      const lines = await fetchLines(hopsFile); // e.g., "Amarillo — (5 lbs)"
+      const parseName = s => {
+        const m = s.split('—')[0].split('-')[0]; // take text before en-dash or hyphen
+        return (m||s).trim();
       };
+      const items = lines.map(line => ({ name: parseName(line), full: line }))
+                         .sort((a,b)=> a.name.localeCompare(b.name,'en',{sensitivity:'base'}));
 
-      const data = rows.slice(1).map(r => ({
-        location: r[idx.location] || "",
-        tap:      r[idx.tap] || "",
-        beer:     r[idx.beer] || "",
-        status:   r[idx.status] || "",
-        half:     r[idx.half] || "",
-        sixth:    r[idx.sixth] || "",
-        cans:     r[idx.cans] || "",
-        stock:    r[idx.stock] || "",
-        notes:    r[idx.notes] || "",
-      }));
+      const buckets = { "A–C":[], "D–N":[], "S–Z":[] };
+      for(const it of items){
+        const ch = (it.name[0]||'').toUpperCase();
+        if (ch >= 'A' && ch <= 'C') buckets["A–C"].push(it.full);
+        else if (ch >= 'D' && ch <= 'N') buckets["D–N"].push(it.full);
+        else buckets["S–Z"].push(it.full);
+      }
 
-      // Make location matching very forgiving
-      const isUp   = (s) => /up|upstairs/i.test(s);
-      const isDown = (s) => /down|downstairs/i.test(s);
-      const isDeck = (s) => /deck/i.test(s);
-
-      const upstairs   = data.filter(x => isUp(x.location));
-      const downstairs = data.filter(x => isDown(x.location));
-      const ondeck     = data.filter(x => isDeck(x.location));
-
-      upEl.innerHTML   = `<h3>Upstairs — On Tap</h3>`   + (upstairs.length   ? buildTable(upstairs)   : `<div class="muted">No rows found.</div>`);
-      downEl.innerHTML = `<h3>Downstairs — On Tap</h3>` + (downstairs.length ? buildTable(downstairs) : `<div class="muted">No rows found.</div>`);
-      deckEl.innerHTML = `<h3>On Deck</h3>`             + (ondeck.length     ? buildTable(ondeck)     : `<div class="muted">No rows found.</div>`);
-    } catch (e) {
-      console.error(e);
-      upEl.textContent   = "Failed to load inventory.";
-      downEl.textContent = "Failed to load inventory.";
-      deckEl.textContent = "Failed to load inventory.";
+      const sub = `
+        <details><summary>${summaryText}</summary>
+          <div>
+            <p><strong>A–C</strong></p>${listHTML(buckets["A–C"])}
+            <p><strong>D–N</strong></p>${listHTML(buckets["D–N"])}
+            <p><strong>S–Z</strong></p>${listHTML(buckets["S–Z"])}
+          </div>
+        </details>
+      `;
+      return sub;
+    }catch(e){
+      console.error('hops', e);
+      return `<details><summary>${summaryText}</summary><div class="muted">Couldn't load hops list.</div></details>`;
     }
   }
 
-  render();
+  try{
+    let html = "";
 
+    // Render simple sections
+    for (const s of simpleSections){
+      const lines = await fetchLines(s.file).catch(()=>[]);
+      html += sectionHTML(s.title, lines);
+    }
+
+    // Render details blocks
+    for (const d of detailBlocks){
+      let lines = null, groups = null, subcontentHTML = "";
+
+      if (d.file) lines = await fetchLines(d.file).catch(()=>[]);
+      if (d.groups){
+        groups = [];
+        for (const g of d.groups){
+          const glines = await fetchLines(g.file).catch(()=>[]);
+          groups.push({ heading:g.heading, items:glines });
+        }
+      }
+      if (d.hopsFile){
+        subcontentHTML = await buildHopsHTML(d.hopsFile, d.hopsSummary || "Hops On Hand");
+      }
+
+      html += detailsHTML({ summary:d.summary, open:d.open, lines, groups, subcontentHTML });
+    }
+
+    mount.innerHTML = html;
+  }catch(e){
+    console.error(e);
+    mount.textContent = "Couldn't load sections.";
+  }
+}
+
+/* ----------------- Maintenance (CSV) ----------------- */
+async function renderMaintenance(){
+  const MAINT_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?gid=2038532004&single=true&output=csv";
+  const el = document.getElementById("maintenance");
+  try{
+    const res  = await fetch(MAINT_CSV_URL, { cache:"no-cache", mode:"cors" });
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = parseCSV(await res.text());
+    if(!rows.length) throw new Error("Empty CSV");
+
+    const header = rows[0].map(h => (h||"").trim().toLowerCase());
+    const iSys   = header.indexOf("system");
+    const iDate  = header.indexOf("date");
+    const iEvent = header.indexOf("event");
+    if(iSys<0 || iDate<0 || iEvent<0){
+      el.innerHTML = "<em>Expected headers: System, Date, Event.</em>";
+      return;
+    }
+
+    const data = rows.slice(1).filter(r => r.some(v => (v||"").trim()!==""));
+    const groups = {};
+    for(const r of data){
+      const key=(r[iSys]||"Other").trim();
+      (groups[key] ||= []).push(r);
+    }
+    for(const k of Object.keys(groups)){
+      groups[k].sort((a,b)=>{
+        const da=new Date(a[iDate]), db=new Date(b[iDate]);
+        return (isNaN(db)-isNaN(da)) || (db-da);
+      });
+    }
+
+    let html = "";
+    for(const [sys, list] of Object.entries(groups)){
+      html += `<h3>${sys} Log</h3><table><thead><tr><th>Date</th><th>Event</th></tr></thead><tbody>`;
+      for(const r of list){ html += `<tr><td>${r[iDate]||""}</td><td>${r[iEvent]||""}</td></tr>`; }
+      html += `</tbody></table>`;
+    }
+    el.innerHTML = html || "<em>No maintenance rows yet.</em>";
+  }catch(e){
+    console.error(e);
+    el.textContent = "Failed to load maintenance log.";
+  }
+}
+
+/* ----------------- Boot ----------------- */
+document.addEventListener("DOMContentLoaded", () => {
+  renderInventory();
+  renderTxtLists();
+  renderMaintenance();
 });
 </script>
-
-<p>
-  <a href="https://docs.google.com/spreadsheets/d/13-oglKrmnpkJok_xEO7brLNmnetRz3XIkrc2gSXf4X0/edit?usp=sharing" target="_blank">🔐 Staff Login to Update Inventory</a>
-</p>
-<p class="muted">Note: updates appear automatically on this page after saving the sheet.</p>
-
-<div id="external-section" style="margin-top:2rem;"></div>
-
-
-<h3>🪖 In the Tanks</h3>
-<ul>
-  <li>Tank 1 → Bunker 7 bbl</li>
-  <li>Tank 3 → NY Lager 3.5 bbl</li>
-  <li>Tank 4 → S'mores 3.5 bbl Done</li>
-  <li>Tank 5 → NY IPA 3.5 bbl</li>
-  <li>Tank 6 → Seltzer 14 bbl</li>
-  <li>Tank 7 → Gringo 14 bbl</li>
-  <li>Tank 8 → Super Haze 7 bbl</li>
-  <li>Available tanks: 2 </li>
-</ul>
-
-<h3>🛠 To Brew</h3>
-<ul>
-  <li>Winter’s Knight</li><li>Cranberry Saison</li><li>Bunker Daze</li>
-</ul>
-
-<h3>⚗️ Chemicals</h3>
-<ul>
-  <li>PAA: 50% with 2 backup</li>
-  <li>CAUSTIC: 95%</li>
-  <li>FOAMING CAUSTIC: 70%</li>
-  <li>LP acid 25% with 1 backup</li>
-  <li>Glycol 40%</li>
-</ul>
-
-<h3>Gas levels</h3>
-<ul>
-  <li>CO2 100 psi tank 50% full</li>
-  <li>Nitrogen 0 psi (No back-up)</li>
-  <li>Oxygen 900 psi</li>
-  <li>2× small CO2 tanks</li>
-</ul>
-
-<details>
-  <summary>🔮 Future Maintenance</summary>
-  <div markdown="1">
-    <ul>
-      <li>New water barrier</li>
-      <li>Fix Water Softener (If not already working)</li>
-      <li>Paint floors</li>
-      <li>Glycol chiller pump is currently bypass; need new set of fuses</li>
-      <li>Update 5/27: received fuses, waiting to install</li>
-    </ul>
-  </div>
-</details>
-
-<br />
-
-<details>
-  <summary>📄 Orders</summary>
-  <div markdown="1">
-    <ul>
-      <li><strong> Eagle:</strong>Bunker DAZE</li>
-    </ul>
-  </div>
-</details>
-
-<br />
-
-<details>
-  <summary>🧻 Labels Needed</summary>
-  <div markdown="1">
-    <p><strong>Upcoming Brews</strong></p>
-    <ul><li>Winter’s Knight</li><li>Super Haze</li></ul>
-    <p><strong>Inventory</strong></p>
-    <ul>
-      <li>Boston South Irish Stout</li><li>New West Coast</li>
-      <li>Founders Sept</li><li>Jaxton's Tart</li>
-    </ul>
-  </div>
-</details>
-
-<br />
-
-<details>
-  <summary>📦 Ingredients</summary>
-  <div markdown="1">
-    <p><strong>Needed</strong></p>
-    <ul><li>Galaxy — 44 lbs</li><li>Amarillo — 44 lbs</li><li>keg collars (30 left)</li></ul>
-
-    <details>
-      <summary>🌿 Hops On Hand</summary>
-      <div markdown="1">
-        <p><strong>A–C</strong></p>
-        <ul>
-          <li>Amarillo — (5 lbs)</li><li>Azacca — (33 lbs)</li>
-          <li>Centennial — (221 lbs)</li><li>Chinook — (5 lbs)</li><li>Citra — (80 lbs)</li>
-        </ul>
-        <p><strong>D–N</strong></p>
-        <ul>
-          <li>El Dorado — (27 lbs)</li><li>Mandarina — (5 lbs)</li>
-          <li>Nugget — (27 lbs)</li><li>NY Chinook — (11 lbs)</li>
-        </ul>
-        <p><strong>S–Z</strong></p>
-        <ul>
-          <li>Saaz — (11 lbs)</li><li>Saaz NY — (11 lbs)</li><li>Simcoe — (33 lbs)</li><li>Vallestia — (38 lbs)</li><li>Vista NY — (11 lbs)</li>
-          <li>Warrior — (5 lbs)</li><li>Zeus — (33 lbs)</li><li>32 DE 2021 — (11 lbs)</li>
-        </ul>
-      </div>
-    </details>
-  </div>
-</details>
-
-<br />
-
-<details>
-  <summary>⚙️ Maintenance & Logs</summary>
-  <div markdown="1">
-    <div id="maintenance" style="margin-top:.75rem;">Loading maintenance…</div>
-
-    <script>
-    (function () {
-      // 🔁 Replace with the PUBLISHED-TO-WEB CSV URL for your “Maintenance” tab (correct gid)
-      const MAINT_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn3XrnFcps7_xm4HBCDfHCss0DB0Wwd5DRlXGxvE4hk9Nc_Hw8-6HuB6LS7p09BlOP44FhL_ByR1kQ/pub?gid=2038532004&single=true&output=csv";
-
-      const csvParse = (typeof window.parseCSV === "function") ? window.parseCSV : function (text) {
-        const out = []; let row = [], field = "", q = false;
-        for (let i=0;i<text.length;i++){
-          const c=text[i], n=text[i+1];
-          if(q){ if(c==='"'&&n==='"'){field+='"';i++;} else if(c==='"'){q=false;} else {field+=c;} }
-          else { if(c==='"'){q=true;}
-            else if(c===','){row.push(field); field="";}
-            else if(c==='\n'||c==='\r'){ if(c==='\r'&&n==='\n') i++; row.push(field); field=""; if(row.some(v=>(v||"").trim()!=="")) out.push(row); row=[];}
-            else {field+=c;}
-          }
-        }
-        if(field.length||row.length){ row.push(field); out.push(row); }
-        return out;
-      };
-
-      function buildTable(rows, iDate, iEvent) {
-        let html = `<table><thead><tr><th>Date</th><th>Event</th></tr></thead><tbody>`;
-        for (const r of rows) {
-          html += `<tr><td>${r[iDate]||""}</td><td>${r[iEvent]||""}</td></tr>`;
-        }
-        html += `</tbody></table>`;
-        return html;
-      }
-
-      async function renderMaintenance() {
-        try {
-          const res = await fetch(MAINT_CSV_URL, { cache: "no-cache", mode: "cors" });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const rows = csvParse(await res.text());
-          if (!rows.length) throw new Error("Empty CSV");
-
-          const header = rows[0].map(h => (h||"").trim().toLowerCase());
-          const iSys   = header.indexOf("system");
-          const iDate  = header.indexOf("date");
-          const iEvent = header.indexOf("event");
-
-          if (iSys < 0 || iDate < 0 || iEvent < 0) {
-            document.getElementById("maintenance").innerHTML =
-              "<em>Expected headers: System, Date, Event.</em>";
-            return;
-          }
-
-          const data = rows.slice(1).filter(r => r.some(v => (v||"").trim() !== ""));
-          const groups = {};
-          for (const r of data) {
-            const key = (r[iSys] || "Other").trim();
-            (groups[key] ||= []).push(r);
-          }
-
-          for (const key of Object.keys(groups)) {
-            groups[key].sort((a,b) => {
-              const da = new Date(a[iDate]), db = new Date(b[iDate]);
-              return (isNaN(db) - isNaN(da)) || (db - da);
-            });
-          }
-
-          let html = "";
-          for (const [sys, list] of Object.entries(groups)) {
-            html += `<h3 style="margin:.6rem 0 .3rem">${sys} Log</h3>`;
-            html += buildTable(list, iDate, iEvent);
-          }
-          document.getElementById("maintenance").innerHTML = html || "<em>No maintenance rows yet.</em>";
-        } catch (e) {
-          console.error(e);
-          document.getElementById("maintenance").textContent = "Failed to load maintenance log.";
-        }
-      }
-
-      renderMaintenance();
-    })();
-    </script>
-
-    <p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMIzh7LHuZMFyK7xNuJIg30oSsXO_VFRJEswS-piHc_RX37A/viewform" target="_blank">🔐 Staff Link to fill out form</a>
-    </p>
-    <p class="muted">Note: updates appear automatically on this page after saving the sheet.</p>
-  </div>
-</details>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const target = document.getElementById('external-section');
-  if (!target) return;
-
-  // Your file lives in /data
-  const TXT_URL = `${location.origin}/data/updates.txt?cb=${Date.now()}`;
-
-  function escapeHTML(s){
-    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  function renderSimpleMarkup(text){
-    const lines = text.split(/\r?\n/);
-    let html = '', inUl = false, inOl = false;
-    const closeLists = () => { if (inUl) { html += '</ul>'; inUl = false; } if (inOl) { html += '</ol>'; inOl = false; } };
-
-    for (const raw of lines) {
-      const line = raw.trim();
-      if (!line) { closeLists(); html += '<p></p>'; continue; }
-
-      // Unordered bullets: -, –, —, *, • (with OR without a space)
-      if (/^[-–—*•]\s*/.test(line)) {
-        if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
-        html += `<li>${escapeHTML(line.replace(/^[-–—*•]\s*/, ''))}</li>`;
-        continue;
-      }
-
-      // Ordered bullets: "1." or "1)" (with OR without a space)
-      const m = line.match(/^(\d+)[\.\)]\s*(.*)$/);
-      if (m) {
-        if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
-        html += `<li>${escapeHTML(m[2])}</li>`;
-        continue;
-      }
-
-      closeLists();
-      html += `<p>${escapeHTML(line)}</p>`;
-    }
-    closeLists();
-    return html;
-  }
-
-  fetch(TXT_URL, { cache: 'no-store' })
-    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); })
-    .then(text => { target.innerHTML = renderSimpleMarkup(text); })
-    .catch(err => {
-      console.error('updates.txt load failed:', err);
-      target.textContent = "Couldn't load updates.";
-    });
-});
-</script> 
-
-
-
-<style>
-  #external-section ul, #external-section ol { margin: 0.25rem 0 0.75rem 1.25rem; }
-  #external-section p { margin: 0.25rem 0; }
-</style>
-
 </body>
 </html>
