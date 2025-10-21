@@ -1,10 +1,12 @@
+# .github/workflows/issue-to-data.yml
 name: Convert Issue to TXT data
 on:
   issues:
     types: [opened, edited, labeled]
+  workflow_dispatch: {}  # lets you test manually if needed
 jobs:
   build:
-    if: contains(github.event.issue.labels.*.name, 'brew-update')
+    if: contains(github.event.issue.labels.*.name, 'brew-update') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -12,9 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Extract issue body to file
+      - name: Save issue body
+        if: ${{ github.event_name == 'issues' }}
         run: |
           printf "%s" "${{ github.event.issue.body }}" > .github/issue.md
+          echo "Wrote .github/issue.md"
+
+      - name: Fallback issue body for manual runs
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "### Date\n\n2025-10-20\n\n### Downstairs items\n\nRestitution | 1/2 bbl: 1 | 1/6 bbl: 0 | Notes: ready\n\n### Hops\n\nCitra\nMosaic\nSaaz\nAmarillo\n" > .github/issue.md
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -22,8 +31,15 @@ jobs:
           node-version: 20
 
       - name: Run parser
-        run: |
-          node .github/scripts/issue_to_txt.js
+        run: node .github/scripts/issue_to_txt.js
+
+      - name: Upload parsed preview (debug)
+        uses: actions/upload-artifact@v4
+        with:
+          name: parsed-data-preview
+          path: |
+            .github/issue.md
+            data/*.txt
 
       - name: Commit updates
         run: |
@@ -31,7 +47,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data
-            git commit -m "Data update from issue #${{ github.event.issue.number }}"
+            git commit -m "Data update from issue ${{ github.event.issue.number || 'manual' }}"
             git push
           else
             echo "No changes to commit."
