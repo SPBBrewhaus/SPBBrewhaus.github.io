@@ -1,0 +1,38 @@
+name: Convert Issue to TXT data
+on:
+  issues:
+    types: [opened, edited, labeled]
+jobs:
+  build:
+    if: contains(github.event.issue.labels.*.name, 'brew-update')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract issue body to file
+        run: |
+          printf "%s" "${{ github.event.issue.body }}" > .github/issue.md
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run parser
+        run: |
+          node .github/scripts/issue_to_txt.js
+
+      - name: Commit updates
+        run: |
+          if [ -n "$(git status --porcelain data)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data
+            git commit -m "Data update from issue #${{ github.event.issue.number }}"
+            git push
+          else
+            echo "No changes to commit."
+          fi
