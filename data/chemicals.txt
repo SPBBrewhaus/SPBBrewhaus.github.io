@@ -1,6 +1,6 @@
-PAA: 50% with 2 backup
-CAUSTIC: 95%
+PAA: 20% with 2 backup
+CAUSTIC: 50%
 FOAMING CAUSTIC: 50%
 LP acid 25% with 1 backup
 Glycol 0%
-Mold Inhibitor 0%
+Mold Inhibitor 100%
