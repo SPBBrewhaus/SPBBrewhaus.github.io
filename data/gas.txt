@@ -1,4 +1,4 @@
-CO2 100 psi tank 50% full
-Nitrogen 300  psi (No back-up)
-Oxygen 900 psi
+CO2 100 psi tank 35% full
+Nitrogen 1500  psi (1 back-up)
+Oxygen 1000 psi
 2× small CO2 tanks
