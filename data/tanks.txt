@@ -1,8 +1,8 @@
-Tank 1 → 
-Tank 2 →winter knight 
-Tank 3 →
+Tank 1 → Restitution
+Tank 2 → Winter knight 
+Tank 3 → Red Ale
 Tank 4 → Rebel Rose
 Tank 5 → Road Soda
 Tank 6 → Gringo 
 Tank 7 → Czechs
-Tank 8 → 
+Tank 8 → Bunker Daze
