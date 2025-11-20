@@ -3,3 +3,4 @@ Fix Water Softener (If not already working)
 Paint floors
 Glycol chiller pump is currently bypass; need new set of fuses
 Update 5/27: received fuses, waiting to install
+Water Filter changed 11/13/2025
